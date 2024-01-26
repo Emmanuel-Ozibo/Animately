@@ -1,6 +1,7 @@
 package com.example.animatelyapp.ui.components
 
 import android.os.Bundle
+import androidx.compose.animation.slideInVertically
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController

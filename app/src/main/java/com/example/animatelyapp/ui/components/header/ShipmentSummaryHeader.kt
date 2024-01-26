@@ -22,6 +22,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.animatelyapp.R
 import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
+import com.example.animatelyapp.ui.theme.CopyIconBg
+import com.example.animatelyapp.ui.theme.HeaderBg
 import com.example.animatelyapp.ui.theme.Orange
 import com.example.animatelyapp.ui.theme.Purple40
 
@@ -33,11 +35,11 @@ fun ShipmentSummaryHeader(
 ) {
     Surface(
         modifier = modifier.fillMaxWidth(),
-        color = Purple40
+        color = HeaderBg
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
+        Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp, top = 8.dp)) {
             ProfileSummarySection(
-                modifier = Modifier.padding(top = 8.dp, bottom = 16.dp)
+                modifier = Modifier.padding(bottom = 8.dp)
             )
             SearchBarSection(
                 modifier = Modifier
@@ -122,7 +124,7 @@ fun SearchBarSection(modifier: Modifier = Modifier) {
 
             BackgroundIcon(
                 modifier = Modifier.padding(vertical = 8.dp),
-                backgroundColor = Orange,
+                backgroundColor = CopyIconBg,
                 iconTint = Color.White,
                 iconDrawableRes = R.drawable.ic_link
             )

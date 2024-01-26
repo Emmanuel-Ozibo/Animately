@@ -12,3 +12,5 @@ val Pink40 = Color(0xFF7D5260)
 
 val Orange = Color(0xFFF57F17)
 val DirtyWhite = Color(0x00D4D4D8)
+val HeaderBg = Color(0xFF503C96)
+val CopyIconBg = Color(0xFFE68A3F)
