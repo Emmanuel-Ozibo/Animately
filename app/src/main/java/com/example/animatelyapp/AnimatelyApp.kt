@@ -1,6 +1,8 @@
 package com.example.animatelyapp
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,6 +12,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import com.example.animatelyapp.ui.components.NavigationHost
 import com.example.animatelyapp.ui.components.bottomnavbar.AppBottomNavigation
@@ -25,6 +29,8 @@ fun AnimatelyApp() {
         mutableStateOf(true)
     }
 
+    val screenDensity = LocalDensity.current
+
     Column(
         verticalArrangement = Arrangement.Top,
         modifier = Modifier.fillMaxWidth()
@@ -38,7 +44,13 @@ fun AnimatelyApp() {
             }
         )
 
-        AnimatedVisibility(visible = isBottomBarVisible) {
+        AnimatedVisibility(visible = isBottomBarVisible,
+            exit = slideOutVertically {
+                with(screenDensity) { 80.dp.roundToPx() } // 80dp is the bottom nav height
+            },
+            enter = slideInVertically {
+                with(screenDensity) { 80.dp.roundToPx() }
+            }) {
             AppBottomNavigation(navController = rootNavController,
                 onDestinationChanged = { shouldShowBottomNav ->
                     isBottomBarVisible = !shouldShowBottomNav
