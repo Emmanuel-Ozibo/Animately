@@ -6,6 +6,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -19,8 +20,10 @@ fun CircularAvatar(modifier: Modifier = Modifier) {
         shape = CircleShape
     ){
         Image(
-            painter = painterResource(R.drawable.ic_launcher_background),
-            contentDescription = "Profile picture")
+            painter = painterResource(R.drawable.profile_image),
+            contentDescription = "Profile picture",
+            contentScale = ContentScale.Crop
+        )
     }
 }
 
