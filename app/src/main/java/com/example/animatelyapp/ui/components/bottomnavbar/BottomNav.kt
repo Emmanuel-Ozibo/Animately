@@ -32,7 +32,6 @@ fun AppBottomNavigation(
         Destinations.Shipment, Destinations.Profile
     )
 
-
     NavigationBar {
         for (screen in screens) {
             NavigationBarItem(
