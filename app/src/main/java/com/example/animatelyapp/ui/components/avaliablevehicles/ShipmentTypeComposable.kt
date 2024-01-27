@@ -1,4 +1,4 @@
-package com.example.animatelyapp.ui.components.tracking
+package com.example.animatelyapp.ui.components.avaliablevehicles
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
@@ -7,9 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
