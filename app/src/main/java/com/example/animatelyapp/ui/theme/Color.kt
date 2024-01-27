@@ -60,4 +60,8 @@ val inverseSurfaceDark = Color(0xFFE6E1E9)
 val inverseOnSurfaceDark = Color(0xFF322F35)
 val inversePrimaryDark = Color(0xFF64568F)
 
+
+
 val orange = Color(0xFFE68A3F)
+val lightOrange = Color(0xFFf9E7D7)
+val lightGreen = Color(0xFFDAEFDF)
