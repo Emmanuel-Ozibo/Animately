@@ -1,7 +1,5 @@
 package com.example.animatelyapp.ui.components
 
-import android.os.Bundle
-import androidx.compose.animation.slideInVertically
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -15,25 +13,23 @@ import com.example.animatelyapp.ui.screens.SearchReceiptScreen
 import com.example.animatelyapp.ui.screens.ShipmentScreen
 import com.example.animatelyapp.ui.screens.ShipmentSummaryScreen
 
-
 @Composable
-fun NavigationHost(modifier: Modifier = Modifier,
-                   rootNavController: NavHostController,
-                   onDestinationChanged: (Boolean) -> Unit) {
-
-
+fun NavigationHost(
+    modifier: Modifier = Modifier,
+    rootNavController: NavHostController,
+    onDestinationChanged: (Boolean) -> Unit,
+) {
     rootNavController.addOnDestinationChangedListener { _, destination, _ ->
         onDestinationChanged(
-            destination.route == Destinations.Shipment.route
+            destination.route == Destinations.Shipment.route,
         )
     }
-
 
     NavHost(
         modifier = modifier,
         navController = rootNavController,
-        startDestination = "homeNav") {
-
+        startDestination = "homeNav",
+    ) {
         navigation(route = "homeNav", startDestination = "shipments_summary") {
             composable(route = "shipments_summary") {
                 ShipmentSummaryScreen()

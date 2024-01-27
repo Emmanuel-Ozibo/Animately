@@ -15,14 +15,13 @@ import androidx.compose.ui.unit.dp
 import com.example.animatelyapp.R
 import com.example.animatelyapp.ui.theme.Orange
 
-
 @Composable
 fun BackgroundIcon(
     modifier: Modifier = Modifier,
     backgroundColor: Color,
     @DrawableRes iconDrawableRes: Int,
     iconTint: Color,
-    iconPadding: Dp = 8.dp
+    iconPadding: Dp = 8.dp,
 ) {
     Surface(
         modifier = modifier,
@@ -33,11 +32,10 @@ fun BackgroundIcon(
             modifier = Modifier.padding(iconPadding),
             tint = iconTint,
             painter = painterResource(id = iconDrawableRes),
-            contentDescription = "Copy Text"
+            contentDescription = "Copy Text",
         )
     }
 }
-
 
 @Preview
 @Composable
@@ -46,6 +44,6 @@ fun BackgroundIconPreview() {
         modifier = Modifier.padding(vertical = 8.dp),
         backgroundColor = Orange,
         iconDrawableRes = R.drawable.ic_link,
-        iconTint = Color.White
+        iconTint = Color.White,
     )
 }

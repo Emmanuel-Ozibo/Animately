@@ -16,14 +16,15 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.animatelyapp.R
 
-
 @Composable
 fun IconText(
     modifier: Modifier = Modifier,
-    text: String, textColor: Color, spacing: Dp,
+    text: String,
+    textColor: Color,
+    spacing: Dp,
     iconPosition: IconPosition = IconPosition.START,
     @DrawableRes iconRes: Int,
-    iconTint: Color = Color.White
+    iconTint: Color = Color.White,
 ) {
     Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
         if (iconPosition == IconPosition.START) {
@@ -31,13 +32,13 @@ fun IconText(
                 painter = painterResource(id = iconRes),
                 contentDescription = "",
                 tint = iconTint,
-                modifier = Modifier.padding(end = spacing).size(12.dp)
+                modifier = Modifier.padding(end = spacing).size(12.dp),
             )
         }
 
         Text(
             text = text,
-            color = textColor
+            color = textColor,
         )
 
         if (iconPosition == IconPosition.END) {
@@ -52,9 +53,9 @@ fun IconText(
 }
 
 enum class IconPosition {
-    START, END
+    START,
+    END,
 }
-
 
 @Preview
 @Composable
@@ -65,6 +66,6 @@ fun IconTextPreview() {
         textColor = Color.White,
         spacing = 16.dp,
         iconPosition = IconPosition.START,
-        iconRes = R.drawable.ic_link
+        iconRes = R.drawable.ic_link,
     )
 }

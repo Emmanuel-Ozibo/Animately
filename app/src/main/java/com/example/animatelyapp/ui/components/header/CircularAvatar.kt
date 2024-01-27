@@ -12,27 +12,24 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.animatelyapp.R
 
-
 @Composable
 fun CircularAvatar(modifier: Modifier = Modifier) {
     Surface(
         modifier = modifier,
-        shape = CircleShape
-    ){
+        shape = CircleShape,
+    ) {
         Image(
             painter = painterResource(R.drawable.profile_image),
             contentDescription = "Profile picture",
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
         )
     }
 }
-
-
 
 @Preview
 @Composable
 fun CircularAvatarPreview() {
     CircularAvatar(
-        modifier = Modifier.size(60.dp)
+        modifier = Modifier.size(60.dp),
     )
 }

@@ -1,6 +1,5 @@
 package com.example.animatelyapp.ui.components.header
 
-
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,42 +23,37 @@ import com.example.animatelyapp.R
 import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
 import com.example.animatelyapp.ui.theme.CopyIconBg
 import com.example.animatelyapp.ui.theme.HeaderBg
-import com.example.animatelyapp.ui.theme.Orange
-import com.example.animatelyapp.ui.theme.Purple40
-
 
 @Composable
 fun ShipmentSummaryHeader(
     modifier: Modifier = Modifier,
-    onSearchBoxClicked: () -> Unit
+    onSearchBoxClicked: () -> Unit,
 ) {
     Surface(
         modifier = modifier.fillMaxWidth(),
-        color = HeaderBg
+        color = HeaderBg,
     ) {
         Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp, top = 8.dp)) {
             ProfileSummarySection(
-                modifier = Modifier.padding(bottom = 8.dp)
+                modifier = Modifier.padding(bottom = 8.dp),
             )
             SearchBarSection(
-                modifier = Modifier
-                    .padding(vertical = 16.dp)
-                    .clickable { onSearchBoxClicked() }
+                modifier =
+                    Modifier
+                        .padding(vertical = 16.dp)
+                        .clickable { onSearchBoxClicked() },
             )
         }
     }
-
 }
-
 
 @Composable
 fun ProfileSummarySection(modifier: Modifier = Modifier) {
     Row(
         modifier = modifier,
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         CircularAvatar(modifier = Modifier.size(50.dp))
-
 
         Column(modifier = Modifier.padding(start = 16.dp)) {
             IconText(
@@ -67,7 +61,7 @@ fun ProfileSummarySection(modifier: Modifier = Modifier) {
                 textColor = Color.White,
                 spacing = 8.dp,
                 iconPosition = IconPosition.START,
-                iconRes = R.drawable.ic_location
+                iconRes = R.drawable.ic_location,
             )
 
             Spacer(modifier = Modifier.padding(top = 4.dp))
@@ -77,7 +71,7 @@ fun ProfileSummarySection(modifier: Modifier = Modifier) {
                 textColor = Color.White,
                 spacing = 8.dp,
                 iconPosition = IconPosition.END,
-                iconRes = R.drawable.ic_arrow_down
+                iconRes = R.drawable.ic_arrow_down,
             )
         }
 
@@ -88,36 +82,36 @@ fun ProfileSummarySection(modifier: Modifier = Modifier) {
             backgroundColor = Color.White,
             iconTint = Color.Black,
             iconDrawableRes = R.drawable.ic_notification,
-            iconPadding = 12.dp
+            iconPadding = 12.dp,
         )
     }
 }
 
-
 @Composable
 fun SearchBarSection(modifier: Modifier = Modifier) {
     Surface(
-        modifier = modifier
-            .height(60.dp)
-            .fillMaxWidth(),
+        modifier =
+            modifier
+                .height(60.dp)
+                .fillMaxWidth(),
         shape = RoundedCornerShape(50.dp),
-        color = Color.White
+        color = Color.White,
     ) {
-
         Row(
-            modifier = Modifier
-                .padding(start = 16.dp, end = 8.dp),
-            verticalAlignment = Alignment.CenterVertically
+            modifier =
+                Modifier
+                    .padding(start = 16.dp, end = 8.dp),
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_search),
-                contentDescription = "Search Shipments"
+                contentDescription = "Search Shipments",
             )
 
             Text(
                 modifier = Modifier.padding(start = 8.dp, end = 8.dp),
                 text = "Enter the receipt number",
-                color = Color.Gray
+                color = Color.Gray,
             )
 
             Spacer(modifier = Modifier.weight(1f))
@@ -126,20 +120,18 @@ fun SearchBarSection(modifier: Modifier = Modifier) {
                 modifier = Modifier.padding(vertical = 8.dp),
                 backgroundColor = CopyIconBg,
                 iconTint = Color.White,
-                iconDrawableRes = R.drawable.ic_link
+                iconDrawableRes = R.drawable.ic_link,
             )
         }
     }
 }
-
 
 @Preview
 @Composable
 fun ShipmentSummaryHeaderPreview() {
     AnimatelyAppTheme {
         ShipmentSummaryHeader(
-            onSearchBoxClicked = {}
+            onSearchBoxClicked = {},
         )
     }
-
 }
