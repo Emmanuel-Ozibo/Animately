@@ -63,7 +63,8 @@ fun TrackingSection(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .padding(horizontal = 16.dp, vertical = 16.dp)
                     .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween){
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
                 IconColumn(
                     backgroundColor = lightOrange,
                     iconDrawableRes = R.drawable.ic_send_package,
@@ -86,7 +87,8 @@ fun TrackingSection(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .padding(horizontal = 16.dp, vertical = 16.dp)
                     .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween){
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
                 IconColumn(
                     backgroundColor = lightGreen,
                     iconDrawableRes = R.drawable.ic_receive_package,
@@ -111,27 +113,27 @@ fun TrackingSection(modifier: Modifier = Modifier) {
                 color = Color.Gray.copy(alpha = 0.2f)
             )
 
-            Surface (modifier = Modifier.clickable {  }){
-                Row (
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp),
+            Surface(modifier = Modifier.clickable { }, color = Color.White) {
+                Row(modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp),
                     horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically){
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Icon(
                         imageVector = Icons.Outlined.Add,
                         contentDescription = "",
                         tint = orange
-                        )
+                    )
                     Text(
                         text = "Add Stop",
                         style = MaterialTheme.typography.titleMedium,
-                        color = orange)
+                        color = orange
+                    )
                 }
             }
         }
     }
 
 }
-
 
 
 @Preview
