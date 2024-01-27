@@ -21,8 +21,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.animatelyapp.R
 import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
-import com.example.animatelyapp.ui.theme.CopyIconBg
-import com.example.animatelyapp.ui.theme.HeaderBg
+import com.example.animatelyapp.ui.theme.orange
+import com.example.animatelyapp.ui.theme.primaryContainerLight
+import com.example.animatelyapp.ui.theme.primaryLight
 
 @Composable
 fun ShipmentSummaryHeader(
@@ -31,7 +32,7 @@ fun ShipmentSummaryHeader(
 ) {
     Surface(
         modifier = modifier.fillMaxWidth(),
-        color = HeaderBg,
+        color = primaryLight,
     ) {
         Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp, top = 8.dp)) {
             ProfileSummarySection(
@@ -58,7 +59,7 @@ fun ProfileSummarySection(modifier: Modifier = Modifier) {
         Column(modifier = Modifier.padding(start = 16.dp)) {
             IconText(
                 text = "Your Location",
-                textColor = Color.White,
+                textColor = primaryContainerLight,
                 spacing = 8.dp,
                 iconPosition = IconPosition.START,
                 iconRes = R.drawable.ic_location,
@@ -79,7 +80,7 @@ fun ProfileSummarySection(modifier: Modifier = Modifier) {
 
         BackgroundIcon(
             modifier = Modifier.size(50.dp),
-            backgroundColor = Color.White,
+            backgroundColor = orange,
             iconTint = Color.Black,
             iconDrawableRes = R.drawable.ic_notification,
             iconPadding = 12.dp,
@@ -118,7 +119,7 @@ fun SearchBarSection(modifier: Modifier = Modifier) {
 
             BackgroundIcon(
                 modifier = Modifier.padding(vertical = 8.dp),
-                backgroundColor = CopyIconBg,
+                backgroundColor = Color.White,
                 iconTint = Color.White,
                 iconDrawableRes = R.drawable.ic_link,
             )

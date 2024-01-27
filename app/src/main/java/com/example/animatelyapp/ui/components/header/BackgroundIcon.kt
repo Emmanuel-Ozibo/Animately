@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.animatelyapp.R
-import com.example.animatelyapp.ui.theme.Orange
+import com.example.animatelyapp.ui.theme.orange
 
 @Composable
 fun BackgroundIcon(
@@ -42,7 +42,7 @@ fun BackgroundIcon(
 fun BackgroundIconPreview() {
     BackgroundIcon(
         modifier = Modifier.padding(vertical = 8.dp),
-        backgroundColor = Orange,
+        backgroundColor = orange,
         iconDrawableRes = R.drawable.ic_link,
         iconTint = Color.White,
     )
