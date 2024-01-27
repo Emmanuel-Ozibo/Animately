@@ -1,5 +1,6 @@
 package com.example.animatelyapp.ui.components.tracking
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,33 +24,39 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.animatelyapp.R
 import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
+import com.example.animatelyapp.ui.theme.lightGreen
 import com.example.animatelyapp.ui.theme.lightOrange
 import com.example.animatelyapp.ui.theme.orange
 
 
 @Composable
-fun TrackingSection() {
+fun TrackingSection(modifier: Modifier = Modifier) {
 
-    Column {
+    Column(modifier = modifier) {
         Text(
             modifier = Modifier.padding(bottom = 8.dp),
             text = "Tracking",
             style = MaterialTheme.typography.titleLarge
         )
 
-        Card{
+        Card(
+            colors = CardDefaults.cardColors(
+                containerColor = Color.White
+            )
+        ) {
             ShipmentNumber(
                 modifier = Modifier
-                    .padding(horizontal = 16.dp)
+                    .padding(top = 16.dp, start = 16.dp, end = 16.dp)
                     .fillMaxWidth(),
                 title = "Shipment Number",
-                shipmentNumber = "NEJKJHJDKKLKHJLDHKJS",
+                shipmentNumber = "NEJKJHJDK3333232443",
                 iconRes = R.drawable.ic_fork_lift
             )
 
             Divider(
                 modifier = Modifier.padding(vertical = 16.dp, horizontal = 16.dp),
                 thickness = 1.dp,
+                color = Color.Gray.copy(alpha = 0.2f)
             )
 
             Row(
@@ -81,7 +88,7 @@ fun TrackingSection() {
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween){
                 IconColumn(
-                    backgroundColor = lightOrange,
+                    backgroundColor = lightGreen,
                     iconDrawableRes = R.drawable.ic_receive_package,
                     iconTint = Color.Unspecified,
                     title = "Receive",
@@ -99,15 +106,14 @@ fun TrackingSection() {
             }
 
             Divider(
-                modifier = Modifier.padding(vertical = 8.dp),
+                modifier = Modifier.padding(top = 8.dp),
                 thickness = 1.dp,
+                color = Color.Gray.copy(alpha = 0.2f)
             )
 
-            Surface (color = Color.Transparent){
+            Surface (modifier = Modifier.clickable {  }){
                 Row (
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 8.dp),
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp),
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically){
                     Icon(
@@ -115,7 +121,8 @@ fun TrackingSection() {
                         contentDescription = "",
                         tint = orange
                         )
-                    Text(text = "Add Stop",
+                    Text(
+                        text = "Add Stop",
                         style = MaterialTheme.typography.titleMedium,
                         color = orange)
                 }

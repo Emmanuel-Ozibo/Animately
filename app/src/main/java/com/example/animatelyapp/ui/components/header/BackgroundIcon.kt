@@ -2,6 +2,7 @@ package com.example.animatelyapp.ui.components.header
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
@@ -41,9 +42,9 @@ fun BackgroundIcon(
 @Composable
 fun BackgroundIconPreview() {
     BackgroundIcon(
-        modifier = Modifier.padding(vertical = 8.dp),
+        modifier = Modifier.padding(vertical = 8.dp).size(50.dp),
         backgroundColor = orange,
-        iconDrawableRes = R.drawable.ic_link,
+        iconDrawableRes = R.drawable.ic_receive_package,
         iconTint = Color.White,
     )
 }

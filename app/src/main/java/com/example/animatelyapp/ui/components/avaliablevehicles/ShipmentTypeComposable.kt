@@ -8,10 +8,12 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,17 +27,24 @@ fun ShipmentTypeComposable(
     shipmentType: String,
     @DrawableRes shipmentImage: Int
 ) {
-    Card(modifier = modifier.aspectRatio(0.8f, ),){
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        ),
+        modifier = modifier.aspectRatio(0.8f),
+    ) {
         Column {
             Text(
                 modifier = Modifier.padding(start = 16.dp, top = 16.dp),
                 text = shipmentType,
-                style = MaterialTheme.typography.titleLarge)
+                style = MaterialTheme.typography.titleLarge
+            )
 
             Text(
                 modifier = Modifier.padding(start = 16.dp, top = 4.dp),
                 text = "Reliable",
-                style = MaterialTheme.typography.bodyLarge)
+                style = MaterialTheme.typography.bodyLarge
+            )
 
             Spacer(modifier = Modifier.padding(bottom = 32.dp))
 

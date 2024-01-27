@@ -1,6 +1,7 @@
 package com.example.animatelyapp.ui.components.tracking
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -41,7 +42,7 @@ fun ShipmentNumber(
             )
         }
 
-        Icon(
+        Image(
             modifier = Modifier.size(50.dp).padding(4.dp),
             painter = painterResource(id = iconRes),
             contentDescription = ""

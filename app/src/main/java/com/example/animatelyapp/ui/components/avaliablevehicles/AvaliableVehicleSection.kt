@@ -16,12 +16,14 @@ import com.example.animatelyapp.R
 
 
 @Composable
-fun AvailableVehicle(vehicles: List<ShipmentVehicle>) {
-
-    Column {
+fun AvailableVehicleSection(
+    modifier: Modifier = Modifier,
+    vehicles: List<ShipmentVehicle>
+) {
+    Column (modifier = modifier) {
         Text(
             modifier = Modifier.padding(bottom = 16.dp),
-            text = "Tracking",
+            text = "Available vehicles",
             style = MaterialTheme.typography.titleLarge
         )
 
@@ -29,7 +31,7 @@ fun AvailableVehicle(vehicles: List<ShipmentVehicle>) {
             horizontalArrangement = Arrangement.spacedBy(16.dp),
         ) {
 
-            items(vehicles.size) {index ->
+            items(vehicles.size) { index ->
                 val vehicle = vehicles[index]
 
                 ShipmentTypeComposable(
@@ -45,7 +47,7 @@ fun AvailableVehicle(vehicles: List<ShipmentVehicle>) {
 }
 
 data class ShipmentVehicle(
-    val name: String, 
+    val name: String,
     @DrawableRes val iconRes: Int
 )
 
@@ -71,6 +73,6 @@ fun AvailableVehiclePreview() {
     )
 
 
-    AvailableVehicle(vehicles = vehicles)
+    AvailableVehicleSection(vehicles = vehicles)
 }
 
