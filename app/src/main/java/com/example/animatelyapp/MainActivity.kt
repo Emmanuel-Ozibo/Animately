@@ -17,7 +17,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
 
 class MainActivity : ComponentActivity() {
-    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
