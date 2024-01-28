@@ -11,7 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.animatelyapp.R
 import com.example.animatelyapp.ui.components.header.BackgroundIcon
@@ -27,14 +29,17 @@ fun IconColumn(
     iconTint: Color,
     showIcon: Boolean = true,
     title: String,
-    description: String
+    description: String,
+    iconSize: Dp = 50.dp,
+    titleTextStyle: TextStyle = MaterialTheme.typography.bodyMedium,
+    descriptionTextStyle: TextStyle = MaterialTheme.typography.labelLarge
 ) {
 
     Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
 
         if(showIcon) {
             BackgroundIcon(
-                modifier = Modifier.size(50.dp),
+                modifier = Modifier.size(iconSize),
                 backgroundColor = backgroundColor,
                 iconDrawableRes = iconDrawableRes,
                 iconTint = iconTint
@@ -44,13 +49,13 @@ fun IconColumn(
         Column(modifier = Modifier.padding(start = if (showIcon) 16.dp else 0.dp)) {
             Text(
                 text = title,
-                style = MaterialTheme.typography.bodyMedium
+                style = titleTextStyle
             )
 
             Text(
                 modifier = Modifier.padding(top = 4.dp),
                 text = description,
-                style = MaterialTheme.typography.labelLarge
+                style = descriptionTextStyle
             )
         }
     }

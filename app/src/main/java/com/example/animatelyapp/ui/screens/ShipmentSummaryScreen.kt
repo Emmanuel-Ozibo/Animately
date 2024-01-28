@@ -2,18 +2,16 @@ package com.example.animatelyapp.ui.screens
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.animateIntAsState
+import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.with
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.rememberScrollableState
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -26,21 +24,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.layout.layout
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.animatelyapp.R
+import com.example.animatelyapp.ui.components.Shipments
 import com.example.animatelyapp.ui.components.avaliablevehicles.AvailableVehicleSection
-import com.example.animatelyapp.ui.components.avaliablevehicles.ShipmentVehicle
 import com.example.animatelyapp.ui.components.header.HeaderMode
 import com.example.animatelyapp.ui.components.header.ShipmentSummaryHeader
 import com.example.animatelyapp.ui.components.tracking.TrackingSection
 import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
 import com.example.animatelyapp.ui.theme.dirtyWhite
-import com.example.animatelyapp.utils.VehicleData
-import kotlinx.coroutines.delay
+import com.example.animatelyapp.utils.DummyData
 import kotlinx.coroutines.launch
 
 @Composable
@@ -49,9 +42,11 @@ fun ShipmentSummaryScreen() {
 
     var headerMode by remember { mutableStateOf(HeaderMode.VIEW) }
 
-    val showViewMode = when (headerMode) {
-        HeaderMode.VIEW -> true
-        HeaderMode.EDIT -> false
+    var showMainContent by remember { mutableStateOf(false) }
+
+    val showEditContent = when (headerMode) {
+        HeaderMode.VIEW -> false
+        HeaderMode.EDIT -> true
     }
 
     var showToolBar by remember {
@@ -62,39 +57,29 @@ fun ShipmentSummaryScreen() {
     val translationAnimation = remember { Animatable(-500f) }
 
 
-    LaunchedEffect(key1 = headerMode) {
+    LaunchedEffect(key1 = "") {
         showToolBar = true
-        launch {
-            alphaAnimation.animateTo(
-                1f,
-                animationSpec = tween(durationMillis = 900, delayMillis = 300)
-            )
-        }
-
-        launch {
-            translationAnimation.animateTo(
-                0f,
-                animationSpec = tween(durationMillis = 300, delayMillis = 400)
-            )
-        }
+        showMainContent = true
     }
 
     Column(
         modifier = Modifier
-            .verticalScroll(rememberScrollState())
+            //.verticalScroll(rememberScrollState())
             .background(color = dirtyWhite),
         verticalArrangement = Arrangement.Top
     ) {
         AnimatedVisibility(visible = showToolBar,
             enter = slideInVertically(
-                animationSpec = tween(delayMillis = 300, durationMillis = 300)
+                animationSpec = tween(durationMillis = 300)
             ) { -it }) {
             ShipmentSummaryHeader(
                 headerMode = headerMode,
                 onSearchBoxClicked = {
                     headerMode = HeaderMode.EDIT
+                    showMainContent = false
                 },
                 onBackButtonClicked = {
+                    showMainContent = true
                     headerMode = when (headerMode) {
                         HeaderMode.VIEW -> HeaderMode.EDIT
                         HeaderMode.EDIT -> HeaderMode.VIEW
@@ -103,43 +88,44 @@ fun ShipmentSummaryScreen() {
             )
         }
 
+        AnimatedVisibility(visible = showEditContent,
+            enter = fadeIn(animationSpec = tween(durationMillis = 600)) + slideInVertically(
+                animationSpec = tween(durationMillis = 300, delayMillis = 350)
+            ) { it * 4 }
+        ) {
+            Shipments(
+                modifier = Modifier.padding(horizontal = 16.dp)
+            )
+        }
 
         AnimatedVisibility(
-            visible = showViewMode,
-            enter = fadeIn(animationSpec = tween(durationMillis = 300)),
-            exit = fadeOut(animationSpec = tween(durationMillis = 300))
+            visible = showMainContent,
+            enter = fadeIn(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
+                    slideInVertically(animationSpec = tween(durationMillis = 300)) { it },
+
+            exit = fadeOut(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
+                    slideOutVertically(animationSpec = tween(durationMillis = 300)) { it }
         ) {
             TrackingSection(
-                modifier = Modifier
-                    .padding(top = 32.dp, start = 16.dp, end = 16.dp)
-                    .graphicsLayer {
-                        alpha = alphaAnimation.value
-                        translationY = -translationAnimation.value
-                    }
+                modifier = Modifier.padding(top = 32.dp, start = 16.dp, end = 16.dp)
             )
         }
 
 
         AnimatedVisibility(
-            visible = showViewMode,
-            enter = fadeIn(animationSpec = tween(durationMillis = 300)),
-            exit = fadeOut(animationSpec = tween(durationMillis = 300))
+            visible = showMainContent,
+            enter = fadeIn(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
+                    slideInVertically(animationSpec = tween(durationMillis = 300)) { it },
+
+            exit = fadeOut(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
+                    slideOutVertically(animationSpec = tween(durationMillis = 300)) { it }
         ) {
             AvailableVehicleSection(
-                modifier = Modifier
-                    .padding(top = 32.dp, start = 16.dp, end = 16.dp)
-                    .graphicsLayer {
-                        alpha = alphaAnimation.value
-                        translationY = -translationAnimation.value
-                    },
-                vehicles = VehicleData.getAvailableVehicles()
+                modifier = Modifier.padding(top = 32.dp, start = 16.dp, end = 16.dp),
+                vehicles = DummyData.getAvailableVehicles()
             )
         }
 
-
-        AnimatedVisibility(visible = !showViewMode) {
-            Text(text = "EDIT LAYOUT")
-        }
 
     }
 }
