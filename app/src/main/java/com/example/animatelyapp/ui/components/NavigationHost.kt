@@ -17,6 +17,7 @@ import com.example.animatelyapp.ui.screens.CalculatorScreen
 import com.example.animatelyapp.ui.screens.SearchReceiptScreen
 import com.example.animatelyapp.ui.screens.ShipmentScreen
 import com.example.animatelyapp.ui.screens.ShipmentSummaryScreen
+import com.example.animatelyapp.utils.Constants
 
 @Composable
 fun NavigationHost(
@@ -26,7 +27,7 @@ fun NavigationHost(
 ) {
     rootNavController.addOnDestinationChangedListener { _, destination, _ ->
         onDestinationChanged(
-            destination.route == Destinations.Shipment.route,
+            destination.route == Destinations.Shipment.route
         )
     }
 
@@ -34,15 +35,20 @@ fun NavigationHost(
         modifier = modifier,
         navController = rootNavController,
         startDestination = "homeNav",
+        enterTransition = { EnterTransition.None },
+        exitTransition = { ExitTransition.None }
     ) {
         navigation(route = "homeNav", startDestination = "shipments_summary") {
+
             composable(route = "shipments_summary") {
                 ShipmentSummaryScreen()
             }
-
-            composable(route = "search_receipt") {
-                SearchReceiptScreen()
-            }
+//
+//            composable(route = "search_receipt",
+//                enterTransition = { fadeIn(animationSpec = tween(durationMillis = Constants.TRANSITION_ANIM_DURATION)) },
+//                exitTransition = { fadeOut(animationSpec = tween(durationMillis = Constants.TRANSITION_ANIM_DURATION)) }) {
+//                SearchReceiptScreen()
+//            }
         }
 
         navigation(route = "calculateNav", startDestination = "calculator") {
