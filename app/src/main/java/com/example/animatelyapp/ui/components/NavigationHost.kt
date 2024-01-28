@@ -34,25 +34,21 @@ fun NavigationHost(
     NavHost(
         modifier = modifier,
         navController = rootNavController,
-        startDestination = "homeNav",
+        startDestination = "shipments_summary",
         enterTransition = { EnterTransition.None },
         exitTransition = { ExitTransition.None }
     ) {
-        navigation(route = "homeNav", startDestination = "shipments_summary") {
 
-            composable(route = "shipments_summary") {
-                ShipmentSummaryScreen()
-            }
-//
-//            composable(route = "search_receipt",
-//                enterTransition = { fadeIn(animationSpec = tween(durationMillis = Constants.TRANSITION_ANIM_DURATION)) },
-//                exitTransition = { fadeOut(animationSpec = tween(durationMillis = Constants.TRANSITION_ANIM_DURATION)) }) {
-//                SearchReceiptScreen()
-//            }
+        composable(route = "shipments_summary") {
+            ShipmentSummaryScreen()
         }
 
         navigation(route = "calculateNav", startDestination = "calculator") {
-            composable(route = "calculator") {
+            composable(
+                route = "calculator",
+                enterTransition = { fadeIn(
+                    animationSpec = tween(durationMillis = Constants.TRANSITION_ANIM_DURATION))
+                }) {
                 CalculatorScreen()
             }
 

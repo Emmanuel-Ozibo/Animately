@@ -74,7 +74,7 @@ sealed class Destinations(
     val icon: ImageVector,
 ) {
     data object HomeScreen : Destinations(
-        route = "homeNav",
+        route = "shipments_summary",
         title = "Home",
         icon = Icons.Outlined.Home,
     )
