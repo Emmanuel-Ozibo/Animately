@@ -32,7 +32,7 @@ fun FancyDropdown(
 ) {
     Surface(
         shape = RoundedCornerShape(8.dp),
-        color = grey
+        color = Color.White
     ) {
         Row(
             modifier = modifier
