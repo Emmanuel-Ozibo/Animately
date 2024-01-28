@@ -58,8 +58,6 @@ fun FancyPrimaryButton(
                 scaleFactor = 1f
             }
 
-            //scaleFactor = 1f
-
             onClick()
         },
         shape = RoundedCornerShape(50.dp),
