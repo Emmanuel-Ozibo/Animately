@@ -63,6 +63,7 @@ val inversePrimaryDark = Color(0xFF64568F)
 
 
 val orange = Color(0xFFE68A3F)
+val deepOrange = Color(0xFFE48C3F)
 val lightOrange = Color(0xFFf9E7D7)
 val lightGreen = Color(0xFFDAEFDF)
 val dirtyWhite = Color(0xFFFAFAFA)
