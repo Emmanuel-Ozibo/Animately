@@ -49,7 +49,7 @@ fun CalculatorScreen(
         delay(100)
         headerStates = ShipmentHeaderState.COLLAPSED
         showContent = true
-        delay(400)
+        delay(100)
         showCategoriesItems = true
     }
 
