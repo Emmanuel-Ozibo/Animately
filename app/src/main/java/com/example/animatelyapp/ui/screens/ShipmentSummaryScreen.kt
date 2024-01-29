@@ -38,11 +38,10 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun ShipmentSummaryScreen() {
-
-
     var headerMode by remember { mutableStateOf(HeaderMode.VIEW) }
 
     var showMainContent by remember { mutableStateOf(false) }
+
 
     val showEditContent = when (headerMode) {
         HeaderMode.VIEW -> false

@@ -2,7 +2,9 @@ package com.example.animatelyapp.ui.screens.calculator.widget
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.staggeredgrid.LazyHorizontalStaggeredGrid
@@ -22,33 +24,42 @@ import com.example.animatelyapp.utils.DummyData
 
 
 @Composable
-fun CategoryWidget(categories: List<Category> = listOf()) {
-    Text(
-        text = "Categories",
-        style = MaterialTheme.typography.titleMedium
-    )
+fun CategoryWidget(
+    modifier: Modifier = Modifier,
+    categories: List<Category> = listOf()) {
 
-    Text(
-        modifier = Modifier.padding(top = 8.dp),
-        text = "What are you sending",
-        style = MaterialTheme.typography.bodyLarge,
-        color = Color.Gray
-    )
+    Column (
+        modifier = modifier.wrapContentHeight()
+    ){
+        Text(
+            text = "Categories",
+            style = MaterialTheme.typography.titleMedium
+        )
 
-    LazyHorizontalStaggeredGrid(
-        rows = StaggeredGridCells.Fixed(2),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-        horizontalItemSpacing = 24.dp,
-        contentPadding = PaddingValues(16.dp),
-        state = rememberLazyStaggeredGridState()
-    ) {
+        Text(
+            modifier = Modifier.padding(top = 8.dp),
+            text = "What are you sending",
+            style = MaterialTheme.typography.bodyLarge,
+            color = Color.Gray
+        )
 
-        items(categories.size) {index ->
-            val category = categories[index]
+        LazyHorizontalStaggeredGrid(
+            modifier = Modifier.height(120.dp),
+            rows = StaggeredGridCells.Fixed(2),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalItemSpacing = 16.dp,
+            contentPadding = PaddingValues(16.dp),
+            state = rememberLazyStaggeredGridState()
+        ) {
 
-            CategoryItem(title = category.title)
+            items(categories.size) {index ->
+                val category = categories[index]
+
+                CategoryItem(title = category.title)
+            }
         }
     }
+
 }
 
 

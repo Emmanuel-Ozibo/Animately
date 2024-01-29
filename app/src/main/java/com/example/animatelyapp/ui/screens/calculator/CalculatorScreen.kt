@@ -10,6 +10,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,7 +33,10 @@ import com.example.animatelyapp.utils.DummyData
 import kotlinx.coroutines.delay
 
 @Composable
-fun CalculatorScreen(onBackClick: () -> Unit) {
+fun CalculatorScreen(
+    onBackClick: () -> Unit,
+    onCalculateClick: () -> Unit
+) {
 
     var headerStates by remember { mutableStateOf(ShipmentHeaderState.EXPANDED) }
     var showContent by remember { mutableStateOf(false) }
@@ -42,7 +47,9 @@ fun CalculatorScreen(onBackClick: () -> Unit) {
         showContent = true
     }
 
-    Column (modifier = Modifier.background(dirtyWhite)){
+    Column(modifier = Modifier
+        .background(dirtyWhite)
+        .verticalScroll(rememberScrollState())) {
         ShipmentCalculationHeader(
             headerState = headerStates,
             onClick = onBackClick
@@ -51,16 +58,19 @@ fun CalculatorScreen(onBackClick: () -> Unit) {
 
         AnimatedVisibility(visible = showContent,
             enter = fadeIn(animationSpec = tween(durationMillis = 300, easing = LinearEasing))
-                    + expandVertically (animationSpec = tween(durationMillis = 500)){ it }
+                    + expandVertically(animationSpec = tween(durationMillis = 500)) { it }
         ) {
             Column {
                 ShipmentDestinationWidget(
                     modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
                 )
 
-                PackagingWidget()
+                PackagingWidget(
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp)
+                )
 
                 CategoryWidget(
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
                     categories = DummyData.getCategories()
                 )
 
@@ -68,8 +78,9 @@ fun CalculatorScreen(onBackClick: () -> Unit) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
-                    buttonText = "Calculate") {
-
+                    buttonText = "Calculate"
+                ) {
+                    onCalculateClick()
                 }
 
             }

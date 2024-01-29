@@ -1,5 +1,6 @@
 package com.example.animatelyapp.ui.theme
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 
 val primaryLight = Color(0xFF503C96)
 val onPrimaryLight = Color(0xFFFFFFFF)
@@ -68,3 +69,4 @@ val lightOrange = Color(0xFFf9E7D7)
 val lightGreen = Color(0xFFDAEFDF)
 val dirtyWhite = Color(0xFFFAFAFA)
 val grey = Color(0xFFF8F8F8)
+val green = Color(0xFF71C496)

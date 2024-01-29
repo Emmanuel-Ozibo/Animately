@@ -6,6 +6,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -50,12 +51,21 @@ fun NavigationHost(
                 CalculatorScreen(
                     onBackClick = {
                         rootNavController.popBackStack()
+                    },
+                    onCalculateClick = {
+                        rootNavController.navigate("calculator_result")
                     }
                 )
             }
 
             composable(route = "calculator_result") {
-                CalculatorResultScreen()
+                CalculatorResultScreen(
+                    backToHomeClick = {
+                        rootNavController.navigate("shipments_summary") {
+                            popUpTo("home") { inclusive = true }
+                        }
+                    }
+                )
             }
         }
 

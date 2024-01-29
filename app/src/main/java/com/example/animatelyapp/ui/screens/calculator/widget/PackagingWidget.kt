@@ -14,8 +14,8 @@ import com.example.animatelyapp.ui.components.FancyDropdown
 import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
 
 @Composable
-fun PackagingWidget() {
-    Column {
+fun PackagingWidget(modifier: Modifier = Modifier) {
+    Column (modifier = modifier) {
         Text(
             text = "Packaging",
             style = MaterialTheme.typography.titleMedium
@@ -29,7 +29,7 @@ fun PackagingWidget() {
         )
 
         FancyDropdown(
-            title = "Box", leadingIcon = R.drawable.ic_package
+            title = "Box", leadingIcon = R.drawable.ic_fast_delivery
         )
 
     }
