@@ -53,34 +53,53 @@ fun CalculatorScreen(
         showCategoriesItems = true
     }
 
-    Column(modifier = Modifier
-        .background(dirtyWhite)
-        .verticalScroll(rememberScrollState())) {
+    Column(
+        modifier = Modifier
+            .background(dirtyWhite)
+    ) {
+
         ShipmentCalculationHeader(
             headerState = headerStates,
             onClick = onBackClick
         )
 
 
-        AnimatedVisibility(visible = showContent,
-            enter = fadeIn(animationSpec = tween(durationMillis = 300, easing = LinearEasing))
-                    + expandVertically(animationSpec = tween(durationMillis = 500)) { it }
-        ) {
-            Column {
+        Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+            AnimatedVisibility(visible = showContent,
+                enter = fadeIn(animationSpec = tween(durationMillis = 200)) + slideInVertically(
+                    animationSpec = tween(durationMillis = 300)
+                ) { it }
+            ) {
                 ShipmentDestinationWidget(
                     modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
                 )
+            }
 
+            AnimatedVisibility(visible = showContent,
+                enter = fadeIn(animationSpec = tween(durationMillis = 200)) + slideInVertically(
+                    animationSpec = tween(durationMillis = 300)
+                ) { it }) {
                 PackagingWidget(
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp)
                 )
+            }
 
+
+            AnimatedVisibility(visible = showContent,
+                enter = fadeIn(animationSpec = tween(durationMillis = 200)) + slideInVertically(
+                    animationSpec = tween(durationMillis = 300)
+                ) { it }) {
                 CategoryWidget(
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
                     categories = DummyData.getStaggeredItems(),
                     showCategories = showCategoriesItems
                 )
+            }
 
+            AnimatedVisibility(visible = showContent,
+                enter = fadeIn(animationSpec = tween(durationMillis = 200)) + slideInVertically(
+                    animationSpec = tween(durationMillis = 300)
+                ) { it }) {
                 FancyPrimaryButton(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -89,8 +108,9 @@ fun CalculatorScreen(
                 ) {
                     onCalculateClick()
                 }
-
             }
+
+
         }
 
     }

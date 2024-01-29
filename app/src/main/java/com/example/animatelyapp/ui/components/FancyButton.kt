@@ -56,7 +56,7 @@ fun FancyPrimaryButton(
                 scaleFactor = 0.8f
                 delay(200)
                 scaleFactor = 1f
-                delay(300)
+                delay(200)
                 onClick()
             }
         },
