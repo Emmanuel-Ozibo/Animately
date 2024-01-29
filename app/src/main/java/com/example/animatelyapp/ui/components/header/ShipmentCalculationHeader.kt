@@ -3,6 +3,7 @@ package com.example.animatelyapp.ui.components.header
 import androidx.compose.animation.core.animateDp
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.updateTransition
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -36,7 +37,8 @@ import kotlinx.coroutines.delay
 @Composable
 fun ShipmentCalculationHeader(
     modifier: Modifier = Modifier,
-    headerState: ShipmentHeaderState = ShipmentHeaderState.EXPANDED
+    headerState: ShipmentHeaderState = ShipmentHeaderState.EXPANDED,
+    onClick: () -> Unit
 ) {
 
     val stateAnimation = updateTransition(targetState = headerState, label = "header_state")
@@ -75,6 +77,7 @@ fun ShipmentCalculationHeader(
             Icon(
                 modifier = Modifier
                     .size(40.dp)
+                    .clickable { onClick() }
                     .graphicsLayer {
                         translationX = iconTranslationX
                     },
@@ -108,6 +111,7 @@ enum class ShipmentHeaderState {
 @Composable
 fun ShipmentCalculationHeaderPreview() {
     ShipmentCalculationHeader(
-        headerState = ShipmentHeaderState.EXPANDED
+        headerState = ShipmentHeaderState.EXPANDED,
+        onClick = {}
     )
 }

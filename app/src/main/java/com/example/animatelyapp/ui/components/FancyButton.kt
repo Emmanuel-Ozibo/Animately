@@ -46,7 +46,7 @@ fun FancyPrimaryButton(
 
     Button(
         modifier = modifier
-            .height(60.dp)
+            .height(50.dp)
             .graphicsLayer {
                 scaleX = scale
                 scaleY = scale
@@ -56,9 +56,8 @@ fun FancyPrimaryButton(
                 scaleFactor = 0.8f
                 delay(200)
                 scaleFactor = 1f
+                onClick()
             }
-
-            onClick()
         },
         shape = RoundedCornerShape(50.dp),
         colors = ButtonDefaults.buttonColors(

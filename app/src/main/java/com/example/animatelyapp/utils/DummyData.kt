@@ -3,6 +3,7 @@ package com.example.animatelyapp.utils
 import com.example.animatelyapp.R
 import com.example.animatelyapp.ui.components.Shipment
 import com.example.animatelyapp.ui.components.avaliablevehicles.ShipmentVehicle
+import com.example.animatelyapp.ui.screens.calculator.widget.Category
 
 object DummyData {
 
@@ -47,5 +48,17 @@ object DummyData {
                 detail = "#NFHJHDHD3675678489 \u2022 London \u2192 Dubai"
             )
         )
+
+    fun getCategories(): List<Category> =
+        listOf(
+            Category("Documents"),
+            Category("Glass"),
+            Category("Liquid"),
+            Category("Food"),
+            Category("Electronic"),
+            Category("Products"),
+            Category("Others"),
+        )
+
 
 }

@@ -1,4 +1,4 @@
-package com.example.animatelyapp.ui.screens
+package com.example.animatelyapp.ui.screens.calculator
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
@@ -13,16 +13,6 @@ import com.example.animatelyapp.ui.components.header.ShipmentHeaderState
 import kotlinx.coroutines.delay
 
 @Composable
-fun CalculatorScreen() {
+fun CalculatorResultScreen() {
 
-    var headerStates by remember { mutableStateOf(ShipmentHeaderState.EXPANDED) }
-
-    LaunchedEffect(key1 = "dd", ) {
-        delay(30)
-        headerStates = ShipmentHeaderState.COLLAPSED
-    }
-
-    Column {
-        ShipmentCalculationHeader(headerState = headerStates )
-    }
 }

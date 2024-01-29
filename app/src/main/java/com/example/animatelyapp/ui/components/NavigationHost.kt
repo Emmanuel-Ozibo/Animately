@@ -4,7 +4,6 @@ import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -12,9 +11,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import com.example.animatelyapp.ui.components.bottomnavbar.Destinations
-import com.example.animatelyapp.ui.screens.CalculatorResultScreen
-import com.example.animatelyapp.ui.screens.CalculatorScreen
-import com.example.animatelyapp.ui.screens.SearchReceiptScreen
+import com.example.animatelyapp.ui.screens.calculator.CalculatorResultScreen
+import com.example.animatelyapp.ui.screens.calculator.CalculatorScreen
 import com.example.animatelyapp.ui.screens.ShipmentScreen
 import com.example.animatelyapp.ui.screens.ShipmentSummaryScreen
 import com.example.animatelyapp.utils.Constants
@@ -49,7 +47,11 @@ fun NavigationHost(
                 enterTransition = { fadeIn(
                     animationSpec = tween(durationMillis = Constants.TRANSITION_ANIM_DURATION))
                 }) {
-                CalculatorScreen()
+                CalculatorScreen(
+                    onBackClick = {
+                        rootNavController.popBackStack()
+                    }
+                )
             }
 
             composable(route = "calculator_result") {
