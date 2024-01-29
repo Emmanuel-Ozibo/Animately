@@ -17,12 +17,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.animatelyapp.ui.components.FancyPrimaryButton
+import com.example.animatelyapp.ui.components.StaggeredItem
 import com.example.animatelyapp.ui.components.header.ShipmentCalculationHeader
 import com.example.animatelyapp.ui.components.header.ShipmentHeaderState
 import com.example.animatelyapp.ui.screens.calculator.widget.CategoryWidget
@@ -41,10 +43,14 @@ fun CalculatorScreen(
     var headerStates by remember { mutableStateOf(ShipmentHeaderState.EXPANDED) }
     var showContent by remember { mutableStateOf(false) }
 
+    var showCategoriesItems by remember { mutableStateOf(false) }
+
     LaunchedEffect(key1 = "random") {
         delay(100)
         headerStates = ShipmentHeaderState.COLLAPSED
         showContent = true
+        delay(400)
+        showCategoriesItems = true
     }
 
     Column(modifier = Modifier
@@ -71,7 +77,8 @@ fun CalculatorScreen(
 
                 CategoryWidget(
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
-                    categories = DummyData.getCategories()
+                    categories = DummyData.getStaggeredItems(),
+                    showCategories = showCategoriesItems
                 )
 
                 FancyPrimaryButton(

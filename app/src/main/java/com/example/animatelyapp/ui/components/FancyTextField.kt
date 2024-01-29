@@ -22,7 +22,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,14 +37,14 @@ import com.example.animatelyapp.R
 import com.example.animatelyapp.ui.theme.grey
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FancyTextField(
     modifier: Modifier = Modifier,
     @DrawableRes leadingIcon: Int,
     hintText: String
 ) {
-
+    var text by remember { mutableStateOf("") }
+    
     Surface(
         shape = RoundedCornerShape(8.dp),
         color = grey
@@ -64,8 +67,8 @@ fun FancyTextField(
 
             BasicTextField(
                 modifier = Modifier.weight(1f),
-                value = "",
-                onValueChange = {}
+                value = text,
+                onValueChange = { text = it }
             )
 
         }

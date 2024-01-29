@@ -2,8 +2,9 @@ package com.example.animatelyapp.utils
 
 import com.example.animatelyapp.R
 import com.example.animatelyapp.ui.components.Shipment
+import com.example.animatelyapp.ui.components.StaggeredItem
 import com.example.animatelyapp.ui.components.avaliablevehicles.ShipmentVehicle
-import com.example.animatelyapp.ui.screens.calculator.widget.Category
+
 
 object DummyData {
 
@@ -49,16 +50,16 @@ object DummyData {
             )
         )
 
-    fun getCategories(): List<Category> =
-        listOf(
-            Category("Documents"),
-            Category("Glass"),
-            Category("Liquid"),
-            Category("Food"),
-            Category("Electronic"),
-            Category("Products"),
-            Category("Others"),
-        )
+
+    fun getStaggeredItems(): List<StaggeredItem<String>> = listOf(
+        StaggeredItem(value = "Documents", selected = false, title = "Document"),
+        StaggeredItem(value = "Glass", selected = false, title = "Glass"),
+        StaggeredItem(value = "Liquid", selected = false, title = "Liquid"),
+        StaggeredItem(value = "Food", selected = false, title = "Food"),
+        StaggeredItem(value = "Electronic", selected = false, title = "Electronic"),
+        StaggeredItem(value = "Products", selected = false, title = "Products"),
+        StaggeredItem(value = "Others", selected = false, title = "Others")
+    )
 
 
 }
