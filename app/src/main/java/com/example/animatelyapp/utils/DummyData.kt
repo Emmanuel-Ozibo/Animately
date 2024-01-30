@@ -12,17 +12,17 @@ object DummyData {
         listOf(
             ShipmentVehicle(
                 name = "Air Freight",
-                iconRes = R.drawable.ic_location
+                iconRes = R.drawable.cargo_plane
             ),
 
             ShipmentVehicle(
                 name = "Cargo Freight",
-                iconRes = R.drawable.ic_location
+                iconRes = R.drawable.cargo_ship
             ),
 
             ShipmentVehicle(
                 name = "Truck Freight",
-                iconRes = R.drawable.ic_location
+                iconRes = R.drawable.cargo_truck
             )
         )
 

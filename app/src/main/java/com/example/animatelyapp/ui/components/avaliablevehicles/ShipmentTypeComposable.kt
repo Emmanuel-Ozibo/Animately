@@ -65,6 +65,6 @@ fun ShipmentTypeComposable(
 fun ShipmentTypeComposablePreview() {
     ShipmentTypeComposable(
         shipmentType = "Ocean freight",
-        shipmentImage = R.drawable.air_shipment
+        shipmentImage = R.drawable.cargo_plane
     )
 }

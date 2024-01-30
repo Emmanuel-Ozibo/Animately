@@ -1,6 +1,7 @@
 package com.example.animatelyapp.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.imeNestedScroll
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -30,11 +31,11 @@ fun Shipments(
         modifier = modifier,
         colors = CardDefaults.cardColors(containerColor = Color.White),
     ){
-        LazyColumn (
+        Column (
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.Top) {
 
-            items(shipments.size) {index ->
+            for (index in shipments.indices) {
                 val shipment = shipments[index]
 
                 IconColumn(

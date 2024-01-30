@@ -52,19 +52,15 @@ fun ShipmentSummaryScreen() {
         mutableStateOf(false)
     }
 
-    val alphaAnimation = remember { Animatable(initialValue = 0f) }
-    val translationAnimation = remember { Animatable(-500f) }
 
-
-    LaunchedEffect(key1 = "") {
+    LaunchedEffect(key1 = "animation") {
         showToolBar = true
         showMainContent = true
     }
 
+
     Column(
-        modifier = Modifier
-            //.verticalScroll(rememberScrollState())
-            .background(color = dirtyWhite),
+        modifier = Modifier.background(color = dirtyWhite),
         verticalArrangement = Arrangement.Top
     ) {
         AnimatedVisibility(visible = showToolBar,
@@ -87,43 +83,51 @@ fun ShipmentSummaryScreen() {
             )
         }
 
-        AnimatedVisibility(visible = showEditContent,
-            enter = fadeIn(animationSpec = tween(durationMillis = 600)) + slideInVertically(
-                animationSpec = tween(durationMillis = 300, delayMillis = 350)
-            ) { it * 4 }
-        ) {
-            Shipments(
-                modifier = Modifier.padding(horizontal = 16.dp)
-            )
+
+        Column (
+            modifier = Modifier.verticalScroll(rememberScrollState())
+        ){
+            AnimatedVisibility(visible = showEditContent,
+                enter = fadeIn(animationSpec = tween(durationMillis = 600)) + slideInVertically(
+                    animationSpec = tween(durationMillis = 300, delayMillis = 350)
+                ) { it * 4 }
+            ) {
+                Shipments(
+                    modifier = Modifier.padding(horizontal = 16.dp)
+                )
+            }
+
+
+            AnimatedVisibility(
+                visible = showMainContent,
+                enter = fadeIn(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
+                        slideInVertically(animationSpec = tween(durationMillis = 300)) { it },
+
+                exit = fadeOut(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
+                        slideOutVertically(animationSpec = tween(durationMillis = 300)) { it }
+            ) {
+                TrackingSection(
+                    modifier = Modifier.padding(top = 32.dp, start = 16.dp, end = 16.dp)
+                )
+            }
+
+
+            AnimatedVisibility(
+                visible = showMainContent,
+                enter = fadeIn(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
+                        slideInVertically(animationSpec = tween(durationMillis = 300)) { it },
+
+                exit = fadeOut(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
+                        slideOutVertically(animationSpec = tween(durationMillis = 300)) { it }
+            ) {
+                AvailableVehicleSection(
+                    modifier = Modifier.padding(top = 32.dp, start = 16.dp, end = 16.dp),
+                    vehicles = DummyData.getAvailableVehicles()
+                )
+            }
         }
 
-        AnimatedVisibility(
-            visible = showMainContent,
-            enter = fadeIn(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
-                    slideInVertically(animationSpec = tween(durationMillis = 300)) { it },
 
-            exit = fadeOut(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
-                    slideOutVertically(animationSpec = tween(durationMillis = 300)) { it }
-        ) {
-            TrackingSection(
-                modifier = Modifier.padding(top = 32.dp, start = 16.dp, end = 16.dp)
-            )
-        }
-
-
-        AnimatedVisibility(
-            visible = showMainContent,
-            enter = fadeIn(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
-                    slideInVertically(animationSpec = tween(durationMillis = 300)) { it },
-
-            exit = fadeOut(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
-                    slideOutVertically(animationSpec = tween(durationMillis = 300)) { it }
-        ) {
-            AvailableVehicleSection(
-                modifier = Modifier.padding(top = 32.dp, start = 16.dp, end = 16.dp),
-                vehicles = DummyData.getAvailableVehicles()
-            )
-        }
 
 
     }
