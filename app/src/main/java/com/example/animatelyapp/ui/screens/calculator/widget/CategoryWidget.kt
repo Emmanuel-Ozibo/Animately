@@ -39,7 +39,7 @@ fun CategoryWidget(
     ){
         Text(
             text = "Categories",
-            style = MaterialTheme.typography.titleMedium
+            style = MaterialTheme.typography.headlineSmall
         )
 
         Text(

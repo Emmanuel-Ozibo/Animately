@@ -18,7 +18,7 @@ fun PackagingWidget(modifier: Modifier = Modifier) {
     Column (modifier = modifier) {
         Text(
             text = "Packaging",
-            style = MaterialTheme.typography.titleMedium
+            style = MaterialTheme.typography.headlineSmall
         )
 
         Text(

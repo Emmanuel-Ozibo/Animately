@@ -6,15 +6,15 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import com.example.animatelyapp.ui.components.bottomnavbar.Destinations
+import com.example.animatelyapp.ui.screens.ProfileScreen
 import com.example.animatelyapp.ui.screens.calculator.CalculatorResultScreen
 import com.example.animatelyapp.ui.screens.calculator.CalculatorScreen
-import com.example.animatelyapp.ui.screens.ShipmentScreen
+import com.example.animatelyapp.ui.screens.shipmenthistory.ShipmentHistoryScreen
 import com.example.animatelyapp.ui.screens.ShipmentSummaryScreen
 import com.example.animatelyapp.utils.Constants
 
@@ -70,11 +70,11 @@ fun NavigationHost(
         }
 
         composable(route = "shipment") {
-            ShipmentScreen()
+            ShipmentHistoryScreen()
         }
 
         composable(route = "profile_screen") {
-            ShipmentScreen()
+            ProfileScreen()
         }
     }
 }
