@@ -1,17 +1,16 @@
-**Animatly App**
+# Animatly App
 This is a toy app to showcase animations using Jetpack compose 
 
 
-**Lint**
+### Lint
 ktlint 
 
 
-**Improvements**
-Extract title string to the string resource
+###Improvements
+Extract titles and other texts string to the string resource
 
-Inspiration: 
+###Inspiration: 
 https://dribbble.com/shots/21617837-Movemate-Shipments-Mobile-App
-
 
 
 ![animately_part1](https://github.com/Emmanuel-Ozibo/Animately/assets/26293878/a263b628-9cbc-4eaf-9b55-b797af5d1ff2)
