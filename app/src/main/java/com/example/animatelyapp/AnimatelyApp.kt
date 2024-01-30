@@ -16,7 +16,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import com.example.animatelyapp.ui.components.NavigationHost
-import com.example.animatelyapp.ui.components.bottomnavbar.AppBottomNavigation
+import com.example.animatelyapp.ui.components.bottomnavbar.AnimatelyBottomNavigation
 
 /*
 Root Composable.
@@ -54,7 +54,7 @@ fun AnimatelyApp() {
                     with(screenDensity) { 80.dp.roundToPx() }
                 },
         ) {
-            AppBottomNavigation(
+            AnimatelyBottomNavigation(
                 navController = rootNavController,
                 onDestinationChanged = { shouldShowBottomNav ->
                     isBottomBarVisible = !shouldShowBottomNav
