@@ -2,6 +2,7 @@ package com.example.animatelyapp.ui.components.headers
 
 import androidx.compose.animation.core.animateDp
 import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -38,21 +39,24 @@ fun ShipmentCalculationHeader(
 
     val stateAnimation = updateTransition(targetState = headerState, label = "header_state")
 
-    val heightAnimation by stateAnimation.animateDp(label = "heightAnimation") { state ->
+    val heightAnimation by stateAnimation.animateDp(label = "heightAnimation",
+        transitionSpec = { tween(durationMillis = 400) }) { state ->
         when (state) {
             ShipmentHeaderState.EXPANDED -> 150.dp
             ShipmentHeaderState.COLLAPSED -> 70.dp
         }
     }
 
-    val iconTranslationX by stateAnimation.animateFloat(label = "iconAnimation") { state ->
+    val iconTranslationX by stateAnimation.animateFloat(label = "iconAnimation",
+        transitionSpec = { tween(durationMillis = 400) }) { state ->
         when (state) {
             ShipmentHeaderState.EXPANDED -> -100f
             ShipmentHeaderState.COLLAPSED -> 0f
         }
     }
 
-    val textAlpha by stateAnimation.animateFloat(label = "textAlphaAnimation") { state ->
+    val textAlpha by stateAnimation.animateFloat(label = "textAlphaAnimation",
+        transitionSpec = { tween(durationMillis = 400) }) { state ->
         when (state) {
             ShipmentHeaderState.EXPANDED -> 0f
             ShipmentHeaderState.COLLAPSED -> 1f

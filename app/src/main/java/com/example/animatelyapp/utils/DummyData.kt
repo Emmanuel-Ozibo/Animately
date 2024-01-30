@@ -1,6 +1,7 @@
 package com.example.animatelyapp.utils
 
 import com.example.animatelyapp.R
+import com.example.animatelyapp.ui.components.Item
 import com.example.animatelyapp.ui.components.Shipment
 import com.example.animatelyapp.ui.components.StaggeredItem
 import com.example.animatelyapp.ui.components.Status
@@ -71,5 +72,81 @@ object DummyData {
         date = "Sept 20, 2023"
     )
 
+
+    fun getShipmentHistories(): List<ShipmentHistory> = listOf(
+        ShipmentHistory(
+            status = Status.IN_PROGRESS,
+            title = "Arriving today1",
+            description = "Your delivery, #NJHFDDLFJ49389788792 from Atlanta is arriving today",
+            price = "\$2000 USD",
+            date = "Sept 20, 2023"
+        ),
+
+        ShipmentHistory(
+            status = Status.LOADING,
+            title = "Arriving today2",
+            description = "Your delivery, #NJHFDDLFJ49389788792 from Atlanta is arriving today",
+            price = "\$2000 USD",
+            date = "Sept 20, 2023"
+        ),
+
+        ShipmentHistory(
+            status = Status.PENDING,
+            title = "Arriving today3",
+            description = "Your delivery, #NJHFDDLFJ49389788792 from Atlanta is arriving today",
+            price = "\$2000 USD",
+            date = "Sept 20, 2023"
+        ),
+
+        ShipmentHistory(
+            status = Status.IN_PROGRESS,
+            title = "Arriving today4",
+            description = "Your delivery, #NJHFDDLFJ49389788792 from Atlanta is arriving today",
+            price = "\$2000 USD",
+            date = "Sept 20, 2023"
+        ),
+
+        ShipmentHistory(
+            status = Status.IN_PROGRESS,
+            title = "Arriving today5",
+            description = "Your delivery, #NJHFDDLFJ49389788792 from Atlanta is arriving today",
+            price = "\$2000 USD",
+            date = "Sept 20, 2023"
+        ),
+
+        ShipmentHistory(
+            status = Status.PENDING,
+            title = "Arriving today6",
+            description = "Your delivery, #NJHFDDLFJ49389788792 from Atlanta is arriving today",
+            price = "\$2000 USD",
+            date = "Sept 20, 2023"
+        )
+    )
+
+    fun getFilterOptions(): List<Item> = listOf(
+        Item(
+            title = "All",
+            count = "30",
+            isSelected = true
+        ),
+
+        Item(
+            title = "In Progress",
+            count = "10",
+            isSelected = false
+        ),
+
+        Item(
+            title = "Pending",
+            count = "10",
+            isSelected = false
+        ),
+
+        Item(
+            title = "Loading",
+            count = "10",
+            isSelected = false
+        )
+    )
 
 }

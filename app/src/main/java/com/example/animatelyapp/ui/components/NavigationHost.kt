@@ -70,7 +70,11 @@ fun NavigationHost(
         }
 
         composable(route = "shipment") {
-            ShipmentHistoryScreen()
+            ShipmentHistoryScreen(
+                onBackClicked = {
+                    rootNavController.popBackStack()
+                }
+            )
         }
 
         composable(route = "profile_screen") {

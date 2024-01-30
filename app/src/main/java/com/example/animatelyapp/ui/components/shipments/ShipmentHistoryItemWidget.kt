@@ -54,7 +54,7 @@ fun ShipmentHistoryItemWidget(
                 Column (modifier = Modifier.weight(3f)){
                     Text(
                         text = shipmentHistory.title,
-                        style = MaterialTheme.typography.headlineSmall
+                        style = MaterialTheme.typography.titleMedium
                     )
 
                     Spacer(modifier = Modifier.padding(bottom = 8.dp))

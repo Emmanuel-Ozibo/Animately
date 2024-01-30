@@ -61,7 +61,7 @@ fun CalculatorScreen(
         Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
             AnimatedVisibility(visible = showContent,
                 enter = fadeIn(animationSpec = tween(durationMillis = 200)) + slideInVertically(
-                    animationSpec = tween(durationMillis = 300)
+                    animationSpec = tween(durationMillis = 400)
                 ) { it }
             ) {
                 ShipmentDestinationWidget(
@@ -71,7 +71,7 @@ fun CalculatorScreen(
 
             AnimatedVisibility(visible = showContent,
                 enter = fadeIn(animationSpec = tween(durationMillis = 200)) + slideInVertically(
-                    animationSpec = tween(durationMillis = 300)
+                    animationSpec = tween(durationMillis = 400)
                 ) { it }) {
                 PackagingWidget(
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp)
@@ -81,7 +81,7 @@ fun CalculatorScreen(
 
             AnimatedVisibility(visible = showContent,
                 enter = fadeIn(animationSpec = tween(durationMillis = 200)) + slideInVertically(
-                    animationSpec = tween(durationMillis = 300)
+                    animationSpec = tween(durationMillis = 400)
                 ) { it }) {
                 CategoryWidget(
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
@@ -92,7 +92,7 @@ fun CalculatorScreen(
 
             AnimatedVisibility(visible = showContent,
                 enter = fadeIn(animationSpec = tween(durationMillis = 200)) + slideInVertically(
-                    animationSpec = tween(durationMillis = 300)
+                    animationSpec = tween(durationMillis = 400)
                 ) { it }) {
                 FancyPrimaryButton(
                     modifier = Modifier
