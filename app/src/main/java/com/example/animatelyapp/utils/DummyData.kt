@@ -3,7 +3,9 @@ package com.example.animatelyapp.utils
 import com.example.animatelyapp.R
 import com.example.animatelyapp.ui.components.Shipment
 import com.example.animatelyapp.ui.components.StaggeredItem
+import com.example.animatelyapp.ui.components.Status
 import com.example.animatelyapp.ui.components.avaliablevehicles.ShipmentVehicle
+import com.example.animatelyapp.ui.components.shipments.ShipmentHistory
 
 
 object DummyData {
@@ -59,6 +61,14 @@ object DummyData {
         StaggeredItem(value = "Electronic", selected = false, title = "Electronic"),
         StaggeredItem(value = "Products", selected = false, title = "Products"),
         StaggeredItem(value = "Others", selected = false, title = "Others")
+    )
+
+    fun getShipmentHistory() = ShipmentHistory(
+        status = Status.IN_PROGRESS,
+        title = "Arriving today",
+        description = "Your delivery, #NJHFDDLFJ49389788792 from Atlanta is arriving today",
+        price = "\$2000 USD",
+        date = "Sept 20, 2023"
     )
 
 
