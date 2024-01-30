@@ -6,10 +6,10 @@ This is a toy app to showcase animations using Jetpack compose
 ktlint 
 
 
-###Improvements
+### Improvements
 Extract titles and other texts string to the string resource
 
-###Inspiration: 
+### Inspiration: 
 https://dribbble.com/shots/21617837-Movemate-Shipments-Mobile-App
 
 
