@@ -1,4 +1,4 @@
-package com.example.animatelyapp.ui.components.header
+package com.example.animatelyapp.ui.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.padding
@@ -44,7 +44,7 @@ fun BackgroundIconPreview() {
     BackgroundIcon(
         modifier = Modifier.padding(vertical = 8.dp).size(50.dp),
         backgroundColor = orange,
-        iconDrawableRes = R.drawable.ic_receive_package,
+        iconDrawableRes = R.drawable.ic_receiver_address,
         iconTint = Color.White,
     )
 }

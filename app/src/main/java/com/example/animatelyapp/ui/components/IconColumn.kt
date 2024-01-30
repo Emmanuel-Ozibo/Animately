@@ -1,4 +1,4 @@
-package com.example.animatelyapp.ui.components.tracking
+package com.example.animatelyapp.ui.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Column
@@ -16,7 +16,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.animatelyapp.R
-import com.example.animatelyapp.ui.components.header.BackgroundIcon
 import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
 import com.example.animatelyapp.ui.theme.lightOrange
 

@@ -1,18 +1,14 @@
 package com.example.animatelyapp.ui.screens
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import com.example.animatelyapp.ui.components.header.HeaderMode
-import com.example.animatelyapp.ui.components.header.ShipmentSummaryHeader
+import com.example.animatelyapp.ui.components.headers.HeaderMode
+import com.example.animatelyapp.ui.components.headers.ShipmentSummaryHeader
 import kotlinx.coroutines.delay
 
 @Composable

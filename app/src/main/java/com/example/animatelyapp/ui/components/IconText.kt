@@ -1,4 +1,4 @@
-package com.example.animatelyapp.ui.components.header
+package com.example.animatelyapp.ui.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Row
