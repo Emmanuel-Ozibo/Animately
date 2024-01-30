@@ -1,6 +1,5 @@
 package com.example.animatelyapp.ui.components.bottomnavbar
 
-
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -23,15 +22,18 @@ fun AnimatelyBottomNavigation(
 
     var selectedIndx by remember { mutableIntStateOf(0) }
 
-    val screens = listOf(
-        Destinations.HomeScreen, Destinations.Calculate,
-        Destinations.Shipment, Destinations.Profile,
-    )
+    val screens =
+        listOf(
+            Destinations.HomeScreen,
+            Destinations.Calculate,
+            Destinations.Shipment,
+            Destinations.Profile,
+        )
 
     BottomNavigationBar(
         selectedIndex = selectedIndx,
         indicatorColor = primaryLight,
-        itemCount = screens.size
+        itemCount = screens.size,
     ) {
         for (screenIndex in screens.indices) {
             val screen = screens[screenIndex]
@@ -52,7 +54,6 @@ fun AnimatelyBottomNavigation(
                 },
                 icon = screen.icon,
                 title = screen.title,
-
             )
         }
     }

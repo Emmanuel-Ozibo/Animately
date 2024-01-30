@@ -45,9 +45,9 @@ import com.example.animatelyapp.ui.theme.outlineVariantLight
 import com.example.animatelyapp.ui.theme.primaryLight
 
 enum class HeaderMode {
-    VIEW, EDIT
+    VIEW,
+    EDIT,
 }
-
 
 @Composable
 fun ShipmentSummaryHeader(
@@ -60,8 +60,9 @@ fun ShipmentSummaryHeader(
 
     val transition = updateTransition(targetState = headerMode, label = "transition")
 
-    val paddingTransition by transition.animateDp(label = "padding_animation",
-        transitionSpec = {tween(durationMillis = 300) }
+    val paddingTransition by transition.animateDp(
+        label = "padding_animation",
+        transitionSpec = { tween(durationMillis = 300) },
     ) { mode ->
         when (mode) {
             HeaderMode.VIEW -> 16.dp
@@ -69,62 +70,69 @@ fun ShipmentSummaryHeader(
         }
     }
 
-    val offsetY by transition.animateDp(label = "offset_y",
-        transitionSpec = {tween(durationMillis = 300) }) { mode ->
+    val offsetY by transition.animateDp(
+        label = "offset_y",
+        transitionSpec = { tween(durationMillis = 300) },
+    ) { mode ->
         when (mode) {
             HeaderMode.VIEW -> 0.dp
-            HeaderMode.EDIT -> -with(LocalDensity.current) { headerHeight.toDp()}
+            HeaderMode.EDIT -> -with(LocalDensity.current) { headerHeight.toDp() }
         }
     }
 
-    val iconVisibilityAnimation = when(headerMode) {
-        HeaderMode.VIEW -> false
-        HeaderMode.EDIT -> true
-    }
-
+    val iconVisibilityAnimation =
+        when (headerMode) {
+            HeaderMode.VIEW -> false
+            HeaderMode.EDIT -> true
+        }
 
     Surface(
-        modifier = modifier
-            .offset(y = offsetY)
-            .fillMaxWidth(),
+        modifier =
+            modifier
+                .offset(y = offsetY)
+                .fillMaxWidth(),
         color = primaryLight,
     ) {
         Column(
-            modifier = Modifier.padding(
-                start = paddingTransition,
-                end = 16.dp,
-                bottom = 16.dp,
-                top = 8.dp
-            )
+            modifier =
+                Modifier.padding(
+                    start = paddingTransition,
+                    end = 16.dp,
+                    bottom = 16.dp,
+                    top = 8.dp,
+                ),
         ) {
             ProfileSummarySection(
-                modifier = Modifier
-                    .onGloballyPositioned {
-                        headerHeight = it.size.height
-                    }
-                    .padding(bottom = 16.dp)
+                modifier =
+                    Modifier
+                        .onGloballyPositioned {
+                            headerHeight = it.size.height
+                        }
+                        .padding(bottom = 16.dp),
             )
 
             Row(
                 modifier = Modifier.padding(top = 8.dp),
-                verticalAlignment = Alignment.CenterVertically) {
-
-                AnimatedVisibility(visible = iconVisibilityAnimation,
-                    enter = slideInHorizontally (animationSpec = tween(durationMillis = 300)){ -it }) {
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                AnimatedVisibility(
+                    visible = iconVisibilityAnimation,
+                    enter = slideInHorizontally(animationSpec = tween(durationMillis = 300)) { -it },
+                ) {
                     Icon(
-                        modifier = Modifier.size(40.dp).clickable {  onBackButtonClicked() },
+                        modifier = Modifier.size(40.dp).clickable { onBackButtonClicked() },
                         tint = Color.White,
                         imageVector = Icons.Outlined.KeyboardArrowLeft,
-                        contentDescription = ""
+                        contentDescription = "",
                     )
                 }
 
                 SearchBarSection(
-                    modifier = Modifier
-                        .clickable { onSearchBoxClicked() }
+                    modifier =
+                        Modifier
+                            .clickable { onSearchBoxClicked() },
                 )
             }
-
         }
     }
 }
@@ -178,9 +186,9 @@ fun SearchBarSection(modifier: Modifier = Modifier) {
     ) {
         Row(
             modifier =
-            Modifier
-                .semantics(mergeDescendants = true) {}
-                .padding(start = 16.dp, end = 8.dp),
+                Modifier
+                    .semantics(mergeDescendants = true) {}
+                    .padding(start = 16.dp, end = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Icon(

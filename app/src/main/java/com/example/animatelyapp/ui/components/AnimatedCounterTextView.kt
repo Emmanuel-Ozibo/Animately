@@ -10,37 +10,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.interpolator.view.animation.LinearOutSlowInInterpolator
 import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
 import com.example.animatelyapp.ui.theme.green
-import com.google.android.material.animation.AnimationUtils.lerp
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
 
 @Composable
 fun AnimatedCounterTextView(
     modifier: Modifier = Modifier,
-    value: Int
+    value: Int,
 ) {
-    //start from the middle
+    // start from the middle
     var initialValue by remember { mutableIntStateOf(value / 2) }
 
     val animatedValue by animateIntAsState(
-        targetValue = initialValue, label = "intAmin",
-        animationSpec = tween(durationMillis = 300)
+        targetValue = initialValue,
+        label = "intAmin",
+        animationSpec = tween(durationMillis = 300),
     )
 
     LaunchedEffect("value") {
@@ -54,27 +46,24 @@ fun AnimatedCounterTextView(
         }
     }
 
-
     Row(
         modifier = modifier,
-        verticalAlignment = Alignment.Bottom
+        verticalAlignment = Alignment.Bottom,
     ) {
         Text(
             text = "\$$animatedValue",
             color = green,
-            style = MaterialTheme.typography.displaySmall
+            style = MaterialTheme.typography.displaySmall,
         )
 
         Text(
             modifier = Modifier.padding(start = 4.dp, bottom = 4.dp),
             text = "USD",
             color = green,
-            style = MaterialTheme.typography.titleLarge
+            style = MaterialTheme.typography.titleLarge,
         )
     }
-
 }
-
 
 @Preview
 @Composable

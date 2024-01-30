@@ -18,42 +18,47 @@ import com.example.animatelyapp.R
 import com.example.animatelyapp.ui.components.FancyTextField
 import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
 
-
 @Composable
 fun ShipmentDestinationWidget(modifier: Modifier = Modifier) {
-    Column(modifier = modifier){
+    Column(modifier = modifier) {
         Text(
             text = "Destination",
-            style = MaterialTheme.typography.headlineSmall
+            style = MaterialTheme.typography.headlineSmall,
         )
 
         Card(
-            modifier = Modifier
-                .padding(top = 16.dp)
-                .fillMaxWidth(),
-            shape = RoundedCornerShape(16.dp), 
-            colors = CardDefaults.cardColors(
-                containerColor = Color.White
-            )
-        ){
+            modifier =
+                Modifier
+                    .padding(top = 16.dp)
+                    .fillMaxWidth(),
+            shape = RoundedCornerShape(16.dp),
+            colors =
+                CardDefaults.cardColors(
+                    containerColor = Color.White,
+                ),
+        ) {
             Column(
                 modifier = Modifier.padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                FancyTextField(leadingIcon = R.drawable.ic_sender_address,
-                    hintText = "Sender Location")
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+            ) {
+                FancyTextField(
+                    leadingIcon = R.drawable.ic_sender_address,
+                    hintText = "Sender Location",
+                )
 
-                FancyTextField(leadingIcon = R.drawable.ic_receiver_address,
-                    hintText = "Sender Location")
+                FancyTextField(
+                    leadingIcon = R.drawable.ic_receiver_address,
+                    hintText = "Sender Location",
+                )
 
-                FancyTextField(leadingIcon = R.drawable.ic_timer,
-                    hintText = "Approx Weight")
+                FancyTextField(
+                    leadingIcon = R.drawable.ic_timer,
+                    hintText = "Approx Weight",
+                )
             }
-
         }
     }
 }
-
-
 
 @Preview
 @Composable

@@ -28,49 +28,50 @@ import com.example.animatelyapp.ui.theme.lightGreen
 import com.example.animatelyapp.ui.theme.lightOrange
 import com.example.animatelyapp.ui.theme.orange
 
-
 @Composable
 fun TrackingSection(modifier: Modifier = Modifier) {
-
     Column(modifier = modifier) {
         Text(
             modifier = Modifier.padding(bottom = 8.dp),
             text = "Tracking",
-            style = MaterialTheme.typography.titleLarge
+            style = MaterialTheme.typography.titleLarge,
         )
 
         Card(
-            colors = CardDefaults.cardColors(
-                containerColor = Color.White
-            )
+            colors =
+                CardDefaults.cardColors(
+                    containerColor = Color.White,
+                ),
         ) {
             ShipmentNumber(
-                modifier = Modifier
-                    .padding(top = 16.dp, start = 16.dp, end = 16.dp)
-                    .fillMaxWidth(),
+                modifier =
+                    Modifier
+                        .padding(top = 16.dp, start = 16.dp, end = 16.dp)
+                        .fillMaxWidth(),
                 title = "Shipment Number",
                 shipmentNumber = "NEJKJHJDK3333232443",
-                iconRes = R.drawable.ic_fork_lift
+                iconRes = R.drawable.ic_fork_lift,
             )
 
             Divider(
                 modifier = Modifier.padding(vertical = 16.dp, horizontal = 16.dp),
                 thickness = 1.dp,
-                color = Color.Gray.copy(alpha = 0.2f)
+                color = Color.Gray.copy(alpha = 0.2f),
             )
 
             Row(
-                modifier = Modifier
-                    .padding(horizontal = 16.dp, vertical = 16.dp)
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                modifier =
+                    Modifier
+                        .padding(horizontal = 16.dp, vertical = 16.dp)
+                        .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 IconColumn(
                     backgroundColor = lightOrange,
                     iconDrawableRes = R.drawable.ic_send_package,
                     iconTint = Color.Unspecified,
                     title = "Sender",
-                    description = "Atlanta, 50943"
+                    description = "Atlanta, 50943",
                 )
 
                 IconColumn(
@@ -79,22 +80,23 @@ fun TrackingSection(modifier: Modifier = Modifier) {
                     iconTint = Color.Unspecified,
                     title = "Time",
                     showIcon = false,
-                    description = "2 days - 3 days"
+                    description = "2 days - 3 days",
                 )
             }
 
             Row(
-                modifier = Modifier
-                    .padding(horizontal = 16.dp, vertical = 16.dp)
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                modifier =
+                    Modifier
+                        .padding(horizontal = 16.dp, vertical = 16.dp)
+                        .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 IconColumn(
                     backgroundColor = lightGreen,
                     iconDrawableRes = R.drawable.ic_receive_package,
                     iconTint = Color.Unspecified,
                     title = "Receive",
-                    description = "Chicago, 50943"
+                    description = "Chicago, 50943",
                 )
 
                 IconColumn(
@@ -103,38 +105,37 @@ fun TrackingSection(modifier: Modifier = Modifier) {
                     iconTint = Color.Unspecified,
                     title = "Time",
                     showIcon = false,
-                    description = "2 days - 3 days"
+                    description = "2 days - 3 days",
                 )
             }
 
             Divider(
                 modifier = Modifier.padding(top = 8.dp),
                 thickness = 1.dp,
-                color = Color.Gray.copy(alpha = 0.2f)
+                color = Color.Gray.copy(alpha = 0.2f),
             )
 
             Surface(modifier = Modifier.clickable { }, color = Color.White) {
-                Row(modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp),
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp),
                     horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Icon(
                         imageVector = Icons.Outlined.Add,
                         contentDescription = "",
-                        tint = orange
+                        tint = orange,
                     )
                     Text(
                         text = "Add Stop",
                         style = MaterialTheme.typography.titleMedium,
-                        color = orange
+                        color = orange,
                     )
                 }
             }
         }
     }
-
 }
-
 
 @Preview
 @Composable

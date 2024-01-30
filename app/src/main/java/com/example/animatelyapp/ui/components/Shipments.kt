@@ -17,19 +17,19 @@ import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
 import com.example.animatelyapp.ui.theme.lightOrange
 import com.example.animatelyapp.utils.DummyData
 
-
 @Composable
 fun Shipments(
     modifier: Modifier = Modifier,
-    shipments: List<Shipment> = DummyData.getShipments()) {
-    Card (
+    shipments: List<Shipment> = DummyData.getShipments(),
+) {
+    Card(
         modifier = modifier,
         colors = CardDefaults.cardColors(containerColor = Color.White),
-    ){
-        Column (
+    ) {
+        Column(
             modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.Top) {
-
+            verticalArrangement = Arrangement.Top,
+        ) {
             for (index in shipments.indices) {
                 val shipment = shipments[index]
 
@@ -41,7 +41,7 @@ fun Shipments(
                     title = shipment.title,
                     description = shipment.detail,
                     titleTextStyle = MaterialTheme.typography.titleMedium,
-                    descriptionTextStyle = MaterialTheme.typography.bodyMedium
+                    descriptionTextStyle = MaterialTheme.typography.bodyMedium,
                 )
 
                 if (index < DummyData.getShipments().size) {
@@ -51,13 +51,9 @@ fun Shipments(
                     )
                 }
             }
-
         }
     }
-
 }
-
-
 
 @Preview
 @Composable
@@ -67,8 +63,7 @@ fun ShipmentsPreview() {
     }
 }
 
-
 data class Shipment(
     val title: String,
-    val detail: String
+    val detail: String,
 )

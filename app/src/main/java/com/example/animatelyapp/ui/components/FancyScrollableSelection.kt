@@ -2,17 +2,12 @@ package com.example.animatelyapp.ui.components
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.animateIntAsState
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -24,7 +19,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -43,20 +37,19 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-
 @Composable
 fun FancyScrollableSelection(
     modifier: Modifier = Modifier,
     options: List<Item>,
-    onItemSelected: (Item) -> Unit
+    onItemSelected: (Item) -> Unit,
 ) {
-
     Row(
-        modifier = modifier
-            .horizontalScroll(rememberScrollState())
-            .padding(vertical = 8.dp),
+        modifier =
+            modifier
+                .horizontalScroll(rememberScrollState())
+                .padding(vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         for (i in options.indices) {
             val item = options[i]
@@ -67,23 +60,24 @@ fun FancyScrollableSelection(
                 isSelected = item.isSelected,
                 onClick = {
                     onItemSelected(item)
-                }
+                },
             )
         }
     }
 }
 
-
 data class Item(
     val title: String,
     val count: String,
-    val isSelected: Boolean
+    val isSelected: Boolean,
 )
 
 @Composable
 fun FancyScrollableSelectionItem(
-    title: String, count: String, isSelected: Boolean,
-    onClick: () -> Unit
+    title: String,
+    count: String,
+    isSelected: Boolean,
+    onClick: () -> Unit,
 ) {
     val textColor = if (isSelected) Color.White else Color.Gray
     val titleTextStyle =
@@ -97,30 +91,36 @@ fun FancyScrollableSelectionItem(
 
     val widthGrowthAnimation by animateDpAsState(
         targetValue = with(LocalDensity.current) { indicatorWidthPx.toDp() },
-        label = "widthAnimation"
+        label = "widthAnimation",
     )
 
-    Column(modifier = Modifier
-        .graphicsLayer {
-            scaleX = scale
-            scaleY = scale
-        }
-        .clickable {
-            CoroutineScope(Dispatchers.Main).launch {
-                scaleFactor = 0.8f
-                delay(100)
-                scaleFactor = 1f
-                delay(100)
-                onClick()
-            }
-        }) {
-        Row(modifier = Modifier.onGloballyPositioned {
-            indicatorWidthPx = it.size.width
-        }) {
+    Column(
+        modifier =
+            Modifier
+                .graphicsLayer {
+                    scaleX = scale
+                    scaleY = scale
+                }
+                .clickable {
+                    CoroutineScope(Dispatchers.Main).launch {
+                        scaleFactor = 0.8f
+                        delay(100)
+                        scaleFactor = 1f
+                        delay(100)
+                        onClick()
+                    }
+                },
+    ) {
+        Row(
+            modifier =
+                Modifier.onGloballyPositioned {
+                    indicatorWidthPx = it.size.width
+                },
+        ) {
             Text(
                 text = title,
                 style = titleTextStyle,
-                color = textColor
+                color = textColor,
             )
 
             Spacer(modifier = Modifier.padding(end = 4.dp))
@@ -128,12 +128,12 @@ fun FancyScrollableSelectionItem(
             Surface(
                 modifier = Modifier,
                 shape = RoundedCornerShape(16.dp),
-                color = countBg
+                color = countBg,
             ) {
                 Text(
                     modifier = Modifier.padding(horizontal = 8.dp),
                     text = count,
-                    color = textColor
+                    color = textColor,
                 )
             }
         }
@@ -147,50 +147,42 @@ fun FancyScrollableSelectionItem(
 //                    .width(widthGrowthAnimation)
 //            )
 //        }
-
     }
-
-
 }
-
 
 @Preview
 @Composable
 private fun FancyScrollableSelectionPreview() {
     AnimatelyAppTheme {
         FancyScrollableSelection(
-            options = listOf(
-                Item(
-                    title = "All",
-                    count = "20",
-                    isSelected = true
+            options =
+                listOf(
+                    Item(
+                        title = "All",
+                        count = "20",
+                        isSelected = true,
+                    ),
+                    Item(
+                        title = "In Progress",
+                        count = "10",
+                        isSelected = false,
+                    ),
+                    Item(
+                        title = "Pending",
+                        count = "5",
+                        isSelected = false,
+                    ),
+                    Item(
+                        title = "Loading",
+                        count = "20",
+                        isSelected = false,
+                    ),
                 ),
-
-                Item(
-                    title = "In Progress",
-                    count = "10",
-                    isSelected = false
-                ),
-
-                Item(
-                    title = "Pending",
-                    count = "5",
-                    isSelected = false
-                ),
-
-                Item(
-                    title = "Loading",
-                    count = "20",
-                    isSelected = false
-                )
-            ),
             onItemSelected = {
-
-            }
+            },
         )
     }
 }
-
 
 @Preview
 @Composable
@@ -200,11 +192,10 @@ private fun FancyScrollableSelectionItemEnabledPreview() {
             title = "Progress",
             count = "20",
             isSelected = true,
-            onClick = {}
+            onClick = {},
         )
     }
 }
-
 
 @Preview
 @Composable
@@ -214,7 +205,7 @@ private fun FancyScrollableSelectionItemDisabledPreview() {
             title = "Progress",
             count = "20",
             isSelected = false,
-            onClick = {}
+            onClick = {},
         )
     }
 }

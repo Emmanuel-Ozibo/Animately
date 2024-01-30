@@ -4,7 +4,6 @@ import androidx.annotation.DrawableRes
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,23 +26,22 @@ import androidx.compose.ui.unit.dp
 import com.example.animatelyapp.R
 import kotlinx.coroutines.delay
 
-
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun AvailableVehicleSection(
     modifier: Modifier = Modifier,
-    vehicles: List<ShipmentVehicle>
+    vehicles: List<ShipmentVehicle>,
 ) {
     var transX by remember { mutableFloatStateOf(500f) }
-
 
     val floatAnimation by animateFloatAsState(
         targetValue = transX,
         label = "x_animation",
-        animationSpec = spring(
-            dampingRatio = Spring.DampingRatioNoBouncy,
-            stiffness = Spring.StiffnessMediumLow
-        )
+        animationSpec =
+            spring(
+                dampingRatio = Spring.DampingRatioNoBouncy,
+                stiffness = Spring.StiffnessMediumLow,
+            ),
     )
 
     LaunchedEffect("launch") {
@@ -55,57 +53,53 @@ fun AvailableVehicleSection(
         Text(
             modifier = Modifier.padding(bottom = 16.dp),
             text = "Available vehicles",
-            style = MaterialTheme.typography.titleLarge
+            style = MaterialTheme.typography.titleLarge,
         )
 
         LazyRow(
-            modifier = Modifier.graphicsLayer {
-                translationX = floatAnimation
-            },
+            modifier =
+                Modifier.graphicsLayer {
+                    translationX = floatAnimation
+                },
             horizontalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             items(vehicles, key = { it.name }) { vehicle ->
                 ShipmentTypeComposable(
-                    modifier = Modifier
-                        .animateItemPlacement()
-                        .width(200.dp),
+                    modifier =
+                        Modifier
+                            .animateItemPlacement()
+                            .width(200.dp),
                     shipmentType = vehicle.name,
-                    shipmentImage = vehicle.iconRes
+                    shipmentImage = vehicle.iconRes,
                 )
             }
-
         }
-
     }
 }
 
 data class ShipmentVehicle(
     val name: String,
-    @DrawableRes val iconRes: Int
+    @DrawableRes val iconRes: Int,
 )
-
 
 @Preview
 @Composable
 fun AvailableVehiclePreview() {
-    val vehicles = listOf(
-        ShipmentVehicle(
-            name = "Air Freight",
-            iconRes = R.drawable.cargo_plane
-        ),
-
-        ShipmentVehicle(
-            name = "Cargo Freight",
-            iconRes = R.drawable.cargo_ship
-        ),
-
-        ShipmentVehicle(
-            name = "Truck Freight",
-            iconRes = R.drawable.cargo_truck
+    val vehicles =
+        listOf(
+            ShipmentVehicle(
+                name = "Air Freight",
+                iconRes = R.drawable.cargo_plane,
+            ),
+            ShipmentVehicle(
+                name = "Cargo Freight",
+                iconRes = R.drawable.cargo_ship,
+            ),
+            ShipmentVehicle(
+                name = "Truck Freight",
+                iconRes = R.drawable.cargo_truck,
+            ),
         )
-    )
-
 
     AvailableVehicleSection(vehicles = vehicles)
 }
-

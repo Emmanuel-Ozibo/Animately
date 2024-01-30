@@ -20,17 +20,16 @@ import com.example.animatelyapp.ui.components.shipments.ShipmentHistoryItemWidge
 import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
 import com.example.animatelyapp.utils.DummyData
 
-
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ShipmentHistoryWidget(
     modifier: Modifier = Modifier,
-    shipmentHistories: List<ShipmentHistory> = listOf()
+    shipmentHistories: List<ShipmentHistory> = listOf(),
 ) {
     Column(modifier = modifier) {
         Text(
             text = stringResource(R.string.shipment_history_list_title),
-            style = MaterialTheme.typography.headlineSmall
+            style = MaterialTheme.typography.headlineSmall,
         )
 
         Spacer(modifier = Modifier.padding(bottom = 16.dp))
@@ -40,21 +39,19 @@ fun ShipmentHistoryWidget(
 
                 ShipmentHistoryItemWidget(
                     modifier = Modifier.animateItemPlacement(),
-                    shipmentHistory = shipmentHistory
+                    shipmentHistory = shipmentHistory,
                 )
             }
         }
-
     }
 }
-
 
 @Preview
 @Composable
 fun ShipmentHistoryWidgetPreview() {
     AnimatelyAppTheme {
         ShipmentHistoryWidget(
-            shipmentHistories = DummyData.getShipmentHistories()
+            shipmentHistories = DummyData.getShipmentHistories(),
         )
     }
 }

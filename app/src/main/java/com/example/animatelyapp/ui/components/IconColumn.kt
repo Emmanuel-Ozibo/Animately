@@ -19,7 +19,6 @@ import com.example.animatelyapp.R
 import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
 import com.example.animatelyapp.ui.theme.lightOrange
 
-
 @Composable
 fun IconColumn(
     modifier: Modifier = Modifier,
@@ -31,37 +30,32 @@ fun IconColumn(
     description: String,
     iconSize: Dp = 50.dp,
     titleTextStyle: TextStyle = MaterialTheme.typography.bodyMedium,
-    descriptionTextStyle: TextStyle = MaterialTheme.typography.labelLarge
+    descriptionTextStyle: TextStyle = MaterialTheme.typography.labelLarge,
 ) {
-
     Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
-
-        if(showIcon) {
+        if (showIcon) {
             BackgroundIcon(
                 modifier = Modifier.size(iconSize),
                 backgroundColor = backgroundColor,
                 iconDrawableRes = iconDrawableRes,
-                iconTint = iconTint
+                iconTint = iconTint,
             )
         }
 
         Column(modifier = Modifier.padding(start = if (showIcon) 16.dp else 0.dp)) {
             Text(
                 text = title,
-                style = titleTextStyle
+                style = titleTextStyle,
             )
 
             Text(
                 modifier = Modifier.padding(top = 4.dp),
                 text = description,
-                style = descriptionTextStyle
+                style = descriptionTextStyle,
             )
         }
     }
-
 }
-
-
 
 @Preview
 @Composable
@@ -72,11 +66,10 @@ fun IconColumnPreview() {
             iconDrawableRes = R.drawable.ic_send_package,
             iconTint = Color.Unspecified,
             title = "Sender",
-            description = "Atlanta, 50943"
+            description = "Atlanta, 50943",
         )
     }
 }
-
 
 @Preview
 @Composable
@@ -88,9 +81,7 @@ fun IconColumnShowPreview() {
             iconTint = Color.Unspecified,
             showIcon = false,
             title = "Sender",
-            description = "Atlanta, 50943"
+            description = "Atlanta, 50943",
         )
     }
 }
-
-

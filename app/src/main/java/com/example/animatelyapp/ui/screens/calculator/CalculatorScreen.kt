@@ -31,9 +31,8 @@ import kotlinx.coroutines.delay
 @Composable
 fun CalculatorScreen(
     onBackClick: () -> Unit,
-    onCalculateClick: () -> Unit
+    onCalculateClick: () -> Unit,
 ) {
-
     var headerStates by remember { mutableStateOf(ShipmentHeaderState.EXPANDED) }
     var showContent by remember { mutableStateOf(false) }
 
@@ -48,64 +47,75 @@ fun CalculatorScreen(
     }
 
     Column(
-        modifier = Modifier
-            .background(dirtyWhite)
+        modifier =
+            Modifier
+                .background(dirtyWhite),
     ) {
-
         ShipmentCalculationHeader(
             headerState = headerStates,
-            onClick = onBackClick
+            onClick = onBackClick,
         )
 
-
         Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-            AnimatedVisibility(visible = showContent,
-                enter = fadeIn(animationSpec = tween(durationMillis = 200)) + slideInVertically(
-                    animationSpec = tween(durationMillis = 400)
-                ) { it }
+            AnimatedVisibility(
+                visible = showContent,
+                enter =
+                    fadeIn(animationSpec = tween(durationMillis = 200)) +
+                        slideInVertically(
+                            animationSpec = tween(durationMillis = 400),
+                        ) { it },
             ) {
                 ShipmentDestinationWidget(
-                    modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
+                    modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp),
                 )
             }
 
-            AnimatedVisibility(visible = showContent,
-                enter = fadeIn(animationSpec = tween(durationMillis = 200)) + slideInVertically(
-                    animationSpec = tween(durationMillis = 400)
-                ) { it }) {
+            AnimatedVisibility(
+                visible = showContent,
+                enter =
+                    fadeIn(animationSpec = tween(durationMillis = 200)) +
+                        slideInVertically(
+                            animationSpec = tween(durationMillis = 400),
+                        ) { it },
+            ) {
                 PackagingWidget(
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp)
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
                 )
             }
 
-
-            AnimatedVisibility(visible = showContent,
-                enter = fadeIn(animationSpec = tween(durationMillis = 200)) + slideInVertically(
-                    animationSpec = tween(durationMillis = 400)
-                ) { it }) {
+            AnimatedVisibility(
+                visible = showContent,
+                enter =
+                    fadeIn(animationSpec = tween(durationMillis = 200)) +
+                        slideInVertically(
+                            animationSpec = tween(durationMillis = 400),
+                        ) { it },
+            ) {
                 CategoryWidget(
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
                     categories = DummyData.getStaggeredItems(),
-                    showCategories = showCategoriesItems
+                    showCategories = showCategoriesItems,
                 )
             }
 
-            AnimatedVisibility(visible = showContent,
-                enter = fadeIn(animationSpec = tween(durationMillis = 200)) + slideInVertically(
-                    animationSpec = tween(durationMillis = 400)
-                ) { it }) {
+            AnimatedVisibility(
+                visible = showContent,
+                enter =
+                    fadeIn(animationSpec = tween(durationMillis = 200)) +
+                        slideInVertically(
+                            animationSpec = tween(durationMillis = 400),
+                        ) { it },
+            ) {
                 FancyPrimaryButton(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 16.dp, end = 16.dp, bottom = 32.dp),
-                    buttonText = "Calculate"
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(start = 16.dp, end = 16.dp, bottom = 32.dp),
+                    buttonText = "Calculate",
                 ) {
                     onCalculateClick()
                 }
             }
-
-
         }
-
     }
 }

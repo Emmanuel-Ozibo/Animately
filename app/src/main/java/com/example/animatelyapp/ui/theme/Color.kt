@@ -1,6 +1,5 @@
 package com.example.animatelyapp.ui.theme
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 
 val primaryLight = Color(0xFF503C96)
 val onPrimaryLight = Color(0xFFFFFFFF)
@@ -31,7 +30,6 @@ val inverseSurfaceLight = Color(0xFF322F35)
 val inverseOnSurfaceLight = Color(0xFFF5EFF7)
 val inversePrimaryLight = Color(0xFFCEBDFF)
 
-
 val primaryDark = Color(0xFFCEBDFF)
 val onPrimaryDark = Color(0xFF35275E)
 val primaryContainerDark = Color(0xFF4B3E76)
@@ -60,8 +58,6 @@ val scrimDark = Color(0xFF000000)
 val inverseSurfaceDark = Color(0xFFE6E1E9)
 val inverseOnSurfaceDark = Color(0xFF322F35)
 val inversePrimaryDark = Color(0xFF64568F)
-
-
 
 val orange = Color(0xFFE68A3F)
 val deepOrange = Color(0xFFE48C3F)

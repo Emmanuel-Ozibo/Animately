@@ -29,60 +29,66 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.animatelyapp.ui.theme.primaryLight
 
-
 @Composable
 fun ShipmentCalculationHeader(
     modifier: Modifier = Modifier,
     headerState: ShipmentHeaderState = ShipmentHeaderState.EXPANDED,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
-
     val stateAnimation = updateTransition(targetState = headerState, label = "header_state")
 
-    val heightAnimation by stateAnimation.animateDp(label = "heightAnimation",
-        transitionSpec = { tween(durationMillis = 400) }) { state ->
+    val heightAnimation by stateAnimation.animateDp(
+        label = "heightAnimation",
+        transitionSpec = { tween(durationMillis = 400) },
+    ) { state ->
         when (state) {
             ShipmentHeaderState.EXPANDED -> 150.dp
             ShipmentHeaderState.COLLAPSED -> 70.dp
         }
     }
 
-    val iconTranslationX by stateAnimation.animateFloat(label = "iconAnimation",
-        transitionSpec = { tween(durationMillis = 400) }) { state ->
+    val iconTranslationX by stateAnimation.animateFloat(
+        label = "iconAnimation",
+        transitionSpec = { tween(durationMillis = 400) },
+    ) { state ->
         when (state) {
             ShipmentHeaderState.EXPANDED -> -100f
             ShipmentHeaderState.COLLAPSED -> 0f
         }
     }
 
-    val textAlpha by stateAnimation.animateFloat(label = "textAlphaAnimation",
-        transitionSpec = { tween(durationMillis = 400) }) { state ->
+    val textAlpha by stateAnimation.animateFloat(
+        label = "textAlphaAnimation",
+        transitionSpec = { tween(durationMillis = 400) },
+    ) { state ->
         when (state) {
             ShipmentHeaderState.EXPANDED -> 0f
             ShipmentHeaderState.COLLAPSED -> 1f
         }
     }
 
-
     Surface(
-        modifier = modifier
-            .height(height = heightAnimation)
-            .fillMaxWidth(),
-        color = primaryLight
+        modifier =
+            modifier
+                .height(height = heightAnimation)
+                .fillMaxWidth(),
+        color = primaryLight,
     ) {
         Row(
             modifier = Modifier.padding(vertical = 16.dp),
-            verticalAlignment = Alignment.CenterVertically) {
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
             Icon(
-                modifier = Modifier
-                    .size(40.dp)
-                    .clickable { onClick() }
-                    .graphicsLayer {
-                        translationX = iconTranslationX
-                    },
+                modifier =
+                    Modifier
+                        .size(40.dp)
+                        .clickable { onClick() }
+                        .graphicsLayer {
+                            translationX = iconTranslationX
+                        },
                 imageVector = Icons.Outlined.KeyboardArrowLeft,
                 contentDescription = "Go Back",
-                tint = Color.White
+                tint = Color.White,
             )
 
             Text(
@@ -90,27 +96,26 @@ fun ShipmentCalculationHeader(
                 text = "Calculate",
                 color = Color.White,
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.titleLarge
+                style = MaterialTheme.typography.titleLarge,
             )
 
             Spacer(
                 modifier = Modifier.size(40.dp),
             )
         }
-
     }
 }
 
 enum class ShipmentHeaderState {
-    EXPANDED, COLLAPSED
+    EXPANDED,
+    COLLAPSED,
 }
-
 
 @Preview
 @Composable
 fun ShipmentCalculationHeaderPreview() {
     ShipmentCalculationHeader(
         headerState = ShipmentHeaderState.EXPANDED,
-        onClick = {}
+        onClick = {},
     )
 }

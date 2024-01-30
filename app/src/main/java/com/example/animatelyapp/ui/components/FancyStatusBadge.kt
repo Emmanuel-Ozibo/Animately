@@ -5,9 +5,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -16,7 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -27,21 +23,20 @@ import com.example.animatelyapp.ui.theme.orange
 import com.example.animatelyapp.ui.theme.paleBlue
 import com.example.animatelyapp.ui.theme.statusGray
 
-
 @Composable
 fun FancyStatusBadge(
     modifier: Modifier = Modifier,
-    status: Status
+    status: Status,
 ) {
-    Surface (
+    Surface(
         modifier = modifier,
         shape = RoundedCornerShape(24.dp),
-        color = statusGray
-    ){
-        Row (
+        color = statusGray,
+    ) {
+        Row(
             modifier = Modifier.padding(6.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ){
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
             val iconRes = getIconRes(status)
             val textColor = getTextColor(status)
 
@@ -49,16 +44,16 @@ fun FancyStatusBadge(
                 modifier = Modifier.size(16.dp),
                 painter = painterResource(id = iconRes),
                 contentDescription = status.name,
-                tint = textColor)
+                tint = textColor,
+            )
 
             Spacer(modifier = Modifier.padding(end = 4.dp))
 
             Text(
                 text = status.uiName,
                 color = textColor,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleMedium,
             )
-
         }
     }
 }
@@ -71,18 +66,18 @@ fun getIconRes(status: Status): Int {
     }
 }
 
-
 fun getTextColor(status: Status): Color {
-    return when(status) {
+    return when (status) {
         Status.IN_PROGRESS -> green
         Status.PENDING -> orange
         Status.LOADING -> paleBlue
     }
 }
 
-
 enum class Status(val uiName: String) {
-    IN_PROGRESS("in-progress"), PENDING("pending"), LOADING("loading")
+    IN_PROGRESS("in-progress"),
+    PENDING("pending"),
+    LOADING("loading"),
 }
 
 @Preview
@@ -90,7 +85,7 @@ enum class Status(val uiName: String) {
 fun FancyStatusBadgePreview() {
     AnimatelyAppTheme {
         FancyStatusBadge(
-            status = Status.IN_PROGRESS
+            status = Status.IN_PROGRESS,
         )
     }
 }

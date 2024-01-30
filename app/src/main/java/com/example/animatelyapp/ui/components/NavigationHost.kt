@@ -12,10 +12,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import com.example.animatelyapp.ui.components.bottomnavbar.Destinations
 import com.example.animatelyapp.ui.screens.ProfileScreen
+import com.example.animatelyapp.ui.screens.ShipmentSummaryScreen
 import com.example.animatelyapp.ui.screens.calculator.CalculatorResultScreen
 import com.example.animatelyapp.ui.screens.calculator.CalculatorScreen
 import com.example.animatelyapp.ui.screens.shipmenthistory.ShipmentHistoryScreen
-import com.example.animatelyapp.ui.screens.ShipmentSummaryScreen
 import com.example.animatelyapp.utils.Constants
 
 @Composable
@@ -26,7 +26,7 @@ fun NavigationHost(
 ) {
     rootNavController.addOnDestinationChangedListener { _, destination, _ ->
         onDestinationChanged(
-            destination.route == Destinations.Shipment.route
+            destination.route == Destinations.Shipment.route,
         )
     }
 
@@ -35,9 +35,8 @@ fun NavigationHost(
         navController = rootNavController,
         startDestination = "shipments_summary",
         enterTransition = { EnterTransition.None },
-        exitTransition = { ExitTransition.None }
+        exitTransition = { ExitTransition.None },
     ) {
-
         composable(route = "shipments_summary") {
             ShipmentSummaryScreen()
         }
@@ -45,16 +44,19 @@ fun NavigationHost(
         navigation(route = "calculateNav", startDestination = "calculator") {
             composable(
                 route = "calculator",
-                enterTransition = { fadeIn(
-                    animationSpec = tween(durationMillis = Constants.TRANSITION_ANIM_DURATION))
-                }) {
+                enterTransition = {
+                    fadeIn(
+                        animationSpec = tween(durationMillis = Constants.TRANSITION_ANIM_DURATION),
+                    )
+                },
+            ) {
                 CalculatorScreen(
                     onBackClick = {
                         rootNavController.popBackStack()
                     },
                     onCalculateClick = {
                         rootNavController.navigate("calculator_result")
-                    }
+                    },
                 )
             }
 
@@ -64,7 +66,7 @@ fun NavigationHost(
                         rootNavController.navigate("shipments_summary") {
                             popUpTo("home") { inclusive = true }
                         }
-                    }
+                    },
                 )
             }
         }
@@ -73,7 +75,7 @@ fun NavigationHost(
             ShipmentHistoryScreen(
                 onBackClicked = {
                     rootNavController.popBackStack()
-                }
+                },
             )
         }
 

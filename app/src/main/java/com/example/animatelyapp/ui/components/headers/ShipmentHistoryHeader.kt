@@ -18,8 +18,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -31,101 +32,105 @@ import androidx.compose.ui.unit.dp
 import com.example.animatelyapp.ui.components.FancyScrollableSelection
 import com.example.animatelyapp.ui.components.Item
 import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import com.example.animatelyapp.ui.theme.primaryLight
 import com.example.animatelyapp.utils.DummyData
-
 
 @Composable
 fun ShipmentHistoryHeader(
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
     headerState: ShipmentHistoryHeaderState,
-    filters: List<Item>
+    filters: List<Item>,
 ) {
     var filterOptions: List<Item> by remember { mutableStateOf(filters) }
 
-
     val transition = updateTransition(targetState = headerState, label = "transition")
 
-
-    val iconTranslationX by transition.animateFloat(label = "iconTranslationX",
-        transitionSpec = { tween(durationMillis = 400) }) { state ->
+    val iconTranslationX by transition.animateFloat(
+        label = "iconTranslationX",
+        transitionSpec = { tween(durationMillis = 400) },
+    ) { state ->
         when (state) {
             ShipmentHistoryHeaderState.START -> -100f
             ShipmentHistoryHeaderState.FINAL -> 0f
         }
     }
 
-    val titleTranslationY by transition.animateFloat(label = "titleTranslationY",
-        transitionSpec = { tween(durationMillis = 400) }) { state ->
+    val titleTranslationY by transition.animateFloat(
+        label = "titleTranslationY",
+        transitionSpec = { tween(durationMillis = 400) },
+    ) { state ->
         when (state) {
             ShipmentHistoryHeaderState.START -> -100f
             ShipmentHistoryHeaderState.FINAL -> 0f
         }
     }
 
-    val alphaAnim by transition.animateFloat(label = "alphaAnim",
-        transitionSpec = { tween(durationMillis = 400) }) { state ->
+    val alphaAnim by transition.animateFloat(
+        label = "alphaAnim",
+        transitionSpec = { tween(durationMillis = 400) },
+    ) { state ->
         when (state) {
             ShipmentHistoryHeaderState.START -> 0f
             ShipmentHistoryHeaderState.FINAL -> 1f
         }
     }
 
-    val filtersTranslationXAnim by transition.animateFloat(label = "filtersTranslationXAnim",
-        transitionSpec = { tween(durationMillis = 400) }) { state ->
+    val filtersTranslationXAnim by transition.animateFloat(
+        label = "filtersTranslationXAnim",
+        transitionSpec = { tween(durationMillis = 400) },
+    ) { state ->
         when (state) {
             ShipmentHistoryHeaderState.START -> 500f
             ShipmentHistoryHeaderState.FINAL -> 0f
         }
     }
 
-    val filtersTranslationYAnim by transition.animateFloat(label = "filtersTranslationYAnim",
-        transitionSpec = { tween(durationMillis = 400) }) { state ->
+    val filtersTranslationYAnim by transition.animateFloat(
+        label = "filtersTranslationYAnim",
+        transitionSpec = { tween(durationMillis = 400) },
+    ) { state ->
         when (state) {
             ShipmentHistoryHeaderState.START -> -500f
             ShipmentHistoryHeaderState.FINAL -> 0f
         }
     }
 
-
     Surface(
         modifier = modifier.fillMaxWidth(),
-        color = primaryLight
+        color = primaryLight,
     ) {
         Column {
             Row(
                 modifier = Modifier.padding(vertical = 16.dp),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
-                    modifier = Modifier
-                        .size(40.dp)
-                        .clickable { onBackClick() }
-                        .graphicsLayer {
-                            translationX = iconTranslationX
-                            alpha = alphaAnim
-                        },
+                    modifier =
+                        Modifier
+                            .size(40.dp)
+                            .clickable { onBackClick() }
+                            .graphicsLayer {
+                                translationX = iconTranslationX
+                                alpha = alphaAnim
+                            },
                     imageVector = Icons.Outlined.KeyboardArrowLeft,
                     contentDescription = "Go Back",
-                    tint = Color.White
+                    tint = Color.White,
                 )
 
                 Text(
-                    modifier = Modifier
-                        .weight(1f)
-                        .graphicsLayer {
-                            alpha = alphaAnim
-                            translationY = titleTranslationY
-                        },
+                    modifier =
+                        Modifier
+                            .weight(1f)
+                            .graphicsLayer {
+                                alpha = alphaAnim
+                                translationY = titleTranslationY
+                            },
                     text = "Shipment History",
                     color = Color.White,
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.titleLarge
+                    style = MaterialTheme.typography.titleLarge,
                 )
 
                 Spacer(
@@ -134,32 +139,32 @@ fun ShipmentHistoryHeader(
             }
 
             FancyScrollableSelection(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .graphicsLayer {
-                        translationX = filtersTranslationXAnim
-                        translationY = filtersTranslationYAnim
-                        alpha = alphaAnim
-                    },
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .graphicsLayer {
+                            translationX = filtersTranslationXAnim
+                            translationY = filtersTranslationYAnim
+                            alpha = alphaAnim
+                        },
                 options = filterOptions,
                 onItemSelected = {
-                    val newList = filterOptions.map { item ->
-                        if (item == it) item.copy(isSelected = true) else item.copy(isSelected = false)
-                    }
+                    val newList =
+                        filterOptions.map { item ->
+                            if (item == it) item.copy(isSelected = true) else item.copy(isSelected = false)
+                        }
 
                     filterOptions = newList
-                }
+                },
             )
-
         }
     }
-
 }
 
 enum class ShipmentHistoryHeaderState {
-    START, FINAL
+    START,
+    FINAL,
 }
-
 
 @Preview
 @Composable

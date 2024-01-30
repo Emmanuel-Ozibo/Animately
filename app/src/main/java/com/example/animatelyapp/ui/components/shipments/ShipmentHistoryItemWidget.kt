@@ -27,21 +27,23 @@ import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
 import com.example.animatelyapp.ui.theme.primaryLight
 import com.example.animatelyapp.utils.DummyData
 
-
 @Composable
 fun ShipmentHistoryItemWidget(
     modifier: Modifier = Modifier,
-    shipmentHistory: ShipmentHistory
+    shipmentHistory: ShipmentHistory,
 ) {
-
-    Card (
-        colors = CardDefaults.cardColors(
-            containerColor = Color.White
-        )
-    ){
-        Column(modifier = modifier
-            .fillMaxWidth()
-            .padding(16.dp)) {
+    Card(
+        colors =
+            CardDefaults.cardColors(
+                containerColor = Color.White,
+            ),
+    ) {
+        Column(
+            modifier =
+                modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+        ) {
             FancyStatusBadge(status = shipmentHistory.status)
 
             Spacer(modifier = Modifier.padding(bottom = 8.dp))
@@ -49,12 +51,12 @@ fun ShipmentHistoryItemWidget(
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                Column (modifier = Modifier.weight(3f)){
+                Column(modifier = Modifier.weight(3f)) {
                     Text(
                         text = shipmentHistory.title,
-                        style = MaterialTheme.typography.titleMedium
+                        style = MaterialTheme.typography.titleMedium,
                     )
 
                     Spacer(modifier = Modifier.padding(bottom = 8.dp))
@@ -62,17 +64,18 @@ fun ShipmentHistoryItemWidget(
                     Text(
                         text = shipmentHistory.description,
                         style = MaterialTheme.typography.bodyMedium,
-                        color = Color.Gray
+                        color = Color.Gray,
                     )
                 }
 
                 Image(
-                    modifier = Modifier
-                        .size(50.dp)
-                        .weight(0.6f)
-                        .aspectRatio(1f),
+                    modifier =
+                        Modifier
+                            .size(50.dp)
+                            .weight(0.6f)
+                            .aspectRatio(1f),
                     painter = painterResource(id = R.drawable.box),
-                    contentDescription = null
+                    contentDescription = null,
                 )
             }
 
@@ -82,37 +85,34 @@ fun ShipmentHistoryItemWidget(
                 Text(
                     text = shipmentHistory.price,
                     color = primaryLight,
-                    style = MaterialTheme.typography.labelLarge
+                    style = MaterialTheme.typography.labelLarge,
                 )
 
                 Spacer(modifier = Modifier.padding(end = 16.dp))
 
                 Text(
                     text = shipmentHistory.date,
-                    style = MaterialTheme.typography.labelLarge
+                    style = MaterialTheme.typography.labelLarge,
                 )
             }
         }
     }
-
 }
-
 
 @Preview
 @Composable
 private fun ShipmentHistoryItemWidgetPreview() {
     AnimatelyAppTheme {
         ShipmentHistoryItemWidget(
-            shipmentHistory = DummyData.getShipmentHistory()
+            shipmentHistory = DummyData.getShipmentHistory(),
         )
     }
 }
-
 
 data class ShipmentHistory(
     val status: Status,
     val title: String,
     val description: String,
     val price: String,
-    val date: String
+    val date: String,
 )

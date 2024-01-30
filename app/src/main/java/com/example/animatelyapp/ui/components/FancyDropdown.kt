@@ -21,52 +21,48 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.animatelyapp.R
 import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
-import com.example.animatelyapp.ui.theme.grey
-
 
 @Composable
 fun FancyDropdown(
     modifier: Modifier = Modifier,
     title: String,
-    @DrawableRes leadingIcon: Int
+    @DrawableRes leadingIcon: Int,
 ) {
     Surface(
         shape = RoundedCornerShape(8.dp),
-        color = Color.White
+        color = Color.White,
     ) {
         Row(
-            modifier = modifier
-                .height(50.dp)
-                .fillMaxWidth()
-                .padding(vertical = 8.dp, horizontal = 8.dp),
-            verticalAlignment = Alignment.CenterVertically
+            modifier =
+                modifier
+                    .height(50.dp)
+                    .fillMaxWidth()
+                    .padding(vertical = 8.dp, horizontal = 8.dp),
+            verticalAlignment = Alignment.CenterVertically,
         ) {
-
             Icon(
                 painter = painterResource(id = leadingIcon),
                 tint = Color.Gray,
-                contentDescription = ""
+                contentDescription = "",
             )
 
             VerticalDivider()
-
 
             Text(
                 modifier = Modifier.weight(1f),
                 text = title,
                 color = Color.Black,
-                style = MaterialTheme.typography.titleMedium)
+                style = MaterialTheme.typography.titleMedium,
+            )
 
             Icon(
                 imageVector = Icons.Outlined.KeyboardArrowDown,
                 contentDescription = "Open Dropdown",
-                tint = Color.Gray
+                tint = Color.Gray,
             )
-
         }
     }
 }
-
 
 @Preview
 @Composable
@@ -74,7 +70,7 @@ fun FancyDropdownPreview() {
     AnimatelyAppTheme {
         FancyDropdown(
             title = "Box",
-            leadingIcon = R.drawable.ic_sender_address
+            leadingIcon = R.drawable.ic_sender_address,
         )
     }
 }

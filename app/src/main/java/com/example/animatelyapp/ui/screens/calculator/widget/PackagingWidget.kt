@@ -15,26 +15,25 @@ import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
 
 @Composable
 fun PackagingWidget(modifier: Modifier = Modifier) {
-    Column (modifier = modifier) {
+    Column(modifier = modifier) {
         Text(
             text = "Packaging",
-            style = MaterialTheme.typography.headlineSmall
+            style = MaterialTheme.typography.headlineSmall,
         )
 
         Text(
             modifier = Modifier.padding(top = 8.dp, bottom = 16.dp),
             text = "What are you sending",
             style = MaterialTheme.typography.bodyMedium,
-            color = Color.Gray
+            color = Color.Gray,
         )
 
         FancyDropdown(
-            title = "Box", leadingIcon = R.drawable.ic_fast_delivery
+            title = "Box",
+            leadingIcon = R.drawable.ic_fast_delivery,
         )
-
     }
 }
-
 
 @Preview
 @Composable

@@ -24,10 +24,8 @@ fun SearchReceiptScreen() {
         ShipmentSummaryHeader(
             onSearchBoxClicked = {},
             onBackButtonClicked = {
-
             },
-            headerMode = headerMode
+            headerMode = headerMode,
         )
     }
-
 }

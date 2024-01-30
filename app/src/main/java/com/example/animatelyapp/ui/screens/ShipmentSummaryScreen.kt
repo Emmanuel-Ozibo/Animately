@@ -37,31 +37,32 @@ fun ShipmentSummaryScreen() {
 
     var showMainContent by remember { mutableStateOf(false) }
 
-
-    val showEditContent = when (headerMode) {
-        HeaderMode.VIEW -> false
-        HeaderMode.EDIT -> true
-    }
+    val showEditContent =
+        when (headerMode) {
+            HeaderMode.VIEW -> false
+            HeaderMode.EDIT -> true
+        }
 
     var showToolBar by remember {
         mutableStateOf(false)
     }
-
 
     LaunchedEffect(key1 = "animation") {
         showToolBar = true
         showMainContent = true
     }
 
-
     Column(
         modifier = Modifier.background(color = dirtyWhite),
-        verticalArrangement = Arrangement.Top
+        verticalArrangement = Arrangement.Top,
     ) {
-        AnimatedVisibility(visible = showToolBar,
-            enter = slideInVertically(
-                animationSpec = tween(durationMillis = 300)
-            ) { -it }) {
+        AnimatedVisibility(
+            visible = showToolBar,
+            enter =
+                slideInVertically(
+                    animationSpec = tween(durationMillis = 300),
+                ) { -it },
+        ) {
             ShipmentSummaryHeader(
                 headerMode = headerMode,
                 onSearchBoxClicked = {
@@ -70,64 +71,62 @@ fun ShipmentSummaryScreen() {
                 },
                 onBackButtonClicked = {
                     showMainContent = true
-                    headerMode = when (headerMode) {
-                        HeaderMode.VIEW -> HeaderMode.EDIT
-                        HeaderMode.EDIT -> HeaderMode.VIEW
-                    }
-                }
+                    headerMode =
+                        when (headerMode) {
+                            HeaderMode.VIEW -> HeaderMode.EDIT
+                            HeaderMode.EDIT -> HeaderMode.VIEW
+                        }
+                },
             )
         }
 
-
-        Column (
-            modifier = Modifier.verticalScroll(rememberScrollState())
-        ){
-            AnimatedVisibility(visible = showEditContent,
-                enter = fadeIn(animationSpec = tween(durationMillis = 600)) + slideInVertically(
-                    animationSpec = tween(durationMillis = 300, delayMillis = 350)
-                ) { it * 4 }
+        Column(
+            modifier = Modifier.verticalScroll(rememberScrollState()),
+        ) {
+            AnimatedVisibility(
+                visible = showEditContent,
+                enter =
+                    fadeIn(animationSpec = tween(durationMillis = 600)) +
+                        slideInVertically(
+                            animationSpec = tween(durationMillis = 300, delayMillis = 350),
+                        ) { it * 4 },
             ) {
                 Shipments(
-                    modifier = Modifier.padding(horizontal = 16.dp)
+                    modifier = Modifier.padding(horizontal = 16.dp),
                 )
             }
 
-
             AnimatedVisibility(
                 visible = showMainContent,
-                enter = fadeIn(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
+                enter =
+                    fadeIn(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
                         slideInVertically(animationSpec = tween(durationMillis = 300)) { it },
-
-                exit = fadeOut(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
-                        slideOutVertically(animationSpec = tween(durationMillis = 300)) { it }
+                exit =
+                    fadeOut(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
+                        slideOutVertically(animationSpec = tween(durationMillis = 300)) { it },
             ) {
                 TrackingSection(
-                    modifier = Modifier.padding(top = 32.dp, start = 16.dp, end = 16.dp)
+                    modifier = Modifier.padding(top = 32.dp, start = 16.dp, end = 16.dp),
                 )
             }
 
-
             AnimatedVisibility(
                 visible = showMainContent,
-                enter = fadeIn(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
+                enter =
+                    fadeIn(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
                         slideInVertically(animationSpec = tween(durationMillis = 300)) { it },
-
-                exit = fadeOut(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
-                        slideOutVertically(animationSpec = tween(durationMillis = 300)) { it }
+                exit =
+                    fadeOut(animationSpec = tween(durationMillis = 300, easing = LinearEasing)) +
+                        slideOutVertically(animationSpec = tween(durationMillis = 300)) { it },
             ) {
                 AvailableVehicleSection(
                     modifier = Modifier.padding(top = 32.dp, start = 16.dp, end = 16.dp),
-                    vehicles = DummyData.getAvailableVehicles()
+                    vehicles = DummyData.getAvailableVehicles(),
                 )
             }
         }
-
-
-
-
     }
 }
-
 
 @Preview
 @Composable

@@ -20,30 +20,30 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.animatelyapp.R
 
-
 @Composable
 fun ShipmentTypeComposable(
     modifier: Modifier = Modifier,
     shipmentType: String,
-    @DrawableRes shipmentImage: Int
+    @DrawableRes shipmentImage: Int,
 ) {
     Card(
-        colors = CardDefaults.cardColors(
-            containerColor = Color.White
-        ),
+        colors =
+            CardDefaults.cardColors(
+                containerColor = Color.White,
+            ),
         modifier = modifier.aspectRatio(0.8f),
     ) {
         Column {
             Text(
                 modifier = Modifier.padding(start = 16.dp, top = 16.dp),
                 text = shipmentType,
-                style = MaterialTheme.typography.titleLarge
+                style = MaterialTheme.typography.titleLarge,
             )
 
             Text(
                 modifier = Modifier.padding(start = 16.dp, top = 4.dp),
                 text = "Reliable",
-                style = MaterialTheme.typography.bodyLarge
+                style = MaterialTheme.typography.bodyLarge,
             )
 
             Spacer(modifier = Modifier.padding(bottom = 32.dp))
@@ -52,19 +52,17 @@ fun ShipmentTypeComposable(
                 modifier = Modifier.fillMaxWidth(),
                 painter = painterResource(id = shipmentImage),
                 contentDescription = "Image of $shipmentType",
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Crop,
             )
-
         }
     }
 }
-
 
 @Preview
 @Composable
 fun ShipmentTypeComposablePreview() {
     ShipmentTypeComposable(
         shipmentType = "Ocean freight",
-        shipmentImage = R.drawable.cargo_plane
+        shipmentImage = R.drawable.cargo_plane,
     )
 }

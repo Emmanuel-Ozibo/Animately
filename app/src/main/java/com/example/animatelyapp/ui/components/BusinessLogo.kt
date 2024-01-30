@@ -19,29 +19,28 @@ import com.example.animatelyapp.ui.theme.AnimatelyAppTheme
 import com.example.animatelyapp.ui.theme.orange
 import com.example.animatelyapp.ui.theme.primaryLight
 
-
 @Composable
 fun BusinessLogo(modifier: Modifier = Modifier) {
-    Row (
+    Row(
         modifier = modifier,
-        verticalAlignment = Alignment.CenterVertically
-    ){
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
         Text(
             text = "MoveMate",
             style = MaterialTheme.typography.headlineLarge,
             color = primaryLight,
             fontStyle = FontStyle.Italic,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
         )
 
         Icon(
             modifier = Modifier.padding(start = 16.dp).height(50.dp),
-            painter = painterResource(id = R.drawable.ic_fast_delivery), contentDescription = "",
-            tint = orange
+            painter = painterResource(id = R.drawable.ic_fast_delivery),
+            contentDescription = "",
+            tint = orange,
         )
     }
 }
-
 
 @Preview
 @Composable
@@ -49,5 +48,4 @@ private fun BusinessLogoPreview() {
     AnimatelyAppTheme {
         BusinessLogo()
     }
-
 }
